@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The AI Revolution — Full History</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#06060c;--surface:#0e0e18;--surface2:#161624;--border:#222236;
+  --text:#e8e8f0;--text-dim:#7a7a96;
+  --anthropic:#d4a574;--openai:#10a37f;--google:#4285f4;--meta:#0668E1;
+  --deepseek:#5b6ee1;--openclaw:#ff6b35;--other:#a78bfa;--academic:#6ee7b7;--ibm:#e05d44;
+}
+html{scroll-behavior:auto}
+body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;overflow-x:hidden}
+
+/* ── PARALLAX LAYERS ─────────────────── */
+.parallax-space{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.star-layer{position:absolute;inset:0}
+.star-layer canvas{width:100%;height:100%}
+.nebula{position:fixed;width:600px;height:600px;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0;opacity:0;transition:opacity 1.5s}
+#nebula1{background:radial-gradient(circle,rgba(167,139,250,0.08),transparent 70%);top:20%;left:-10%}
+#nebula2{background:radial-gradient(circle,rgba(212,165,116,0.1),transparent 70%);top:10%;right:-10%}
+#nebula3{background:radial-gradient(circle,rgba(16,163,127,0.08),transparent 70%);top:40%;left:30%}
+
+/* Grid overlay that gets denser */
+.grid-overlay{position:fixed;inset:0;pointer-events:none;z-index:1;
+  background-image:linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.015) 1px,transparent 1px);
+  background-size:60px 60px;
+  opacity:0;transition:opacity 0.8s}
+
+/* Speed lines */
+.speed-lines{position:fixed;inset:0;pointer-events:none;z-index:2;opacity:0;transition:opacity 0.3s}
+.speed-line{position:absolute;height:1px;left:10%;right:10%;
+  background:linear-gradient(90deg,transparent,rgba(167,139,250,0.12),rgba(212,165,116,0.12),transparent)}
+
+/* ── SCROLL PROGRESS BAR ─────────────── */
+.progress-track{position:fixed;right:16px;top:50%;transform:translateY(-50%);width:3px;height:40vh;background:rgba(255,255,255,0.06);border-radius:2px;z-index:100}
+.progress-fill{position:absolute;bottom:0;left:0;width:100%;border-radius:2px;background:linear-gradient(to top,var(--academic),var(--google),var(--anthropic));transition:height 0.1s}
+.progress-year{position:fixed;right:28px;top:50%;transform:translateY(-50%);font-size:0.7rem;font-weight:700;color:var(--text-dim);z-index:100;writing-mode:vertical-rl;letter-spacing:0.1em}
+
+/* ── HEADER (stays at top = future) ──── */
+.top-header{position:relative;z-index:10;text-align:center;padding:80px 20px 60px;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.top-header h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:900;line-height:1.05;
+  background:linear-gradient(135deg,#fff 0%,#a78bfa 40%,#d4a574 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px}
+.top-header p{color:var(--text-dim);font-size:1.1rem;font-weight:300;max-width:500px}
+.top-header .arrow-down{margin-top:40px;opacity:0.3;animation:bob 2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+
+/* ── FILTER BAR ──────────────────────── */
+.filters{position:sticky;top:0;z-index:50;display:flex;flex-wrap:wrap;justify-content:center;gap:6px;padding:12px 20px;background:rgba(6,6,12,0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.filter-btn{padding:5px 14px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text-dim);font-family:inherit;font-size:0.74rem;font-weight:500;cursor:pointer;transition:all 0.25s;white-space:nowrap}
+.filter-btn:hover{border-color:#555;color:var(--text)}
+.filter-btn.active{color:#fff}
+.filter-btn.active[data-filter="all"]{background:var(--surface2);border-color:#555}
+.filter-btn.active[data-filter="anthropic"]{background:var(--anthropic);border-color:var(--anthropic);color:#111}
+.filter-btn.active[data-filter="openai"]{background:var(--openai);border-color:var(--openai)}
+.filter-btn.active[data-filter="google"]{background:var(--google);border-color:var(--google)}
+.filter-btn.active[data-filter="meta"]{background:var(--meta);border-color:var(--meta)}
+.filter-btn.active[data-filter="deepseek"]{background:var(--deepseek);border-color:var(--deepseek)}
+.filter-btn.active[data-filter="openclaw"]{background:var(--openclaw);border-color:var(--openclaw)}
+.filter-btn.active[data-filter="other"]{background:var(--other);border-color:var(--other)}
+.filter-btn.active[data-filter="academic"]{background:var(--academic);border-color:var(--academic);color:#111}
+.filter-btn.active[data-filter="ibm"]{background:var(--ibm);border-color:var(--ibm)}
+
+/* ── TIMELINE SPINE ──────────────────── */
+.timeline{position:relative;z-index:10;max-width:1000px;margin:0 auto;padding:0 20px 100vh}
+
+.spine{position:absolute;left:50%;top:0;bottom:0;width:2px;transform:translateX(-50%);
+  background:linear-gradient(to top,rgba(110,231,183,0.4),rgba(66,133,244,0.4) 40%,rgba(212,165,116,0.5) 80%,rgba(167,139,250,0.3))}
+
+/* ── ERA DIVIDERS ────────────────────── */
+.era-divider{position:relative;z-index:5;text-align:center;padding:80px 0 40px;clear:both}
+.era-divider .era-tag{display:inline-block;padding:8px 24px;border-radius:24px;border:1px solid var(--border);background:var(--bg);font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-dim)}
+.era-divider .era-year-range{display:block;font-size:0.6rem;color:rgba(255,255,255,0.25);margin-top:4px;letter-spacing:0.1em}
+
+/* ── EVENT NODES ─────────────────────── */
+.event{position:relative;width:46%;margin-bottom:0;padding-bottom:12px;opacity:0;transform:translateY(40px);transition:opacity 0.6s ease,transform 0.6s ease}
+.event.visible{opacity:1;transform:translateY(0)}
+.event.left{float:left;clear:left;text-align:right;padding-right:40px}
+.event.right{float:right;clear:right;text-align:left;padding-left:40px}
+.event.hidden-filter{display:none}
+
+/* Connector */
+.event .connector{position:absolute;top:20px;width:30px;height:2px}
+.event.left .connector{right:0}
+.event.right .connector{left:0}
+
+/* Node dot */
+.event .node{position:absolute;top:14px;width:16px;height:16px;border-radius:50%;z-index:10;transition:transform 0.3s,box-shadow 0.3s;cursor:pointer}
+.event.left .node{right:-38px}
+.event.right .node{left:-38px}
+.event:hover .node{transform:scale(1.6)}
+
+.event .node-date{position:absolute;top:26px;font-size:0.55rem;font-weight:600;color:var(--text-dim);line-height:1.35;z-index:5}
+.event.left .node-date{right:2px;text-align:right}
+.event.right .node-date{left:2px;text-align:left}
+
+/* Card */
+.event-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px 18px;cursor:pointer;transition:all 0.3s;position:relative;overflow:hidden;display:inline-block;max-width:100%;text-align:left}
+.event-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:14px 14px 0 0}
+.event-card:hover{transform:translateY(-3px);border-color:#444}
+
+.event-title{font-size:0.9rem;font-weight:700;line-height:1.3;margin-bottom:4px}
+.event-desc{font-size:0.76rem;color:var(--text-dim);line-height:1.55;margin-bottom:8px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.company-badge{display:inline-block;font-size:0.6rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;padding:2px 8px;border-radius:8px;border:1px solid}
+.click-hint{float:right;font-size:0.65rem;color:var(--text-dim);opacity:0;transition:opacity 0.2s;margin-top:2px}
+.event-card:hover .click-hint{opacity:1}
+
+/* Color per company */
+.ev-anthropic .event-card::before{background:var(--anthropic)}.ev-anthropic .event-card:hover{box-shadow:0 8px 30px rgba(212,165,116,0.2)}.ev-anthropic .company-badge{color:var(--anthropic);border-color:var(--anthropic)}.ev-anthropic .node{background:var(--anthropic);box-shadow:0 0 12px rgba(212,165,116,0.4)}.ev-anthropic .connector{background:rgba(212,165,116,0.3)}
+.ev-openai .event-card::before{background:var(--openai)}.ev-openai .event-card:hover{box-shadow:0 8px 30px rgba(16,163,127,0.2)}.ev-openai .company-badge{color:var(--openai);border-color:var(--openai)}.ev-openai .node{background:var(--openai);box-shadow:0 0 12px rgba(16,163,127,0.4)}.ev-openai .connector{background:rgba(16,163,127,0.3)}
+.ev-google .event-card::before{background:var(--google)}.ev-google .event-card:hover{box-shadow:0 8px 30px rgba(66,133,244,0.2)}.ev-google .company-badge{color:var(--google);border-color:var(--google)}.ev-google .node{background:var(--google);box-shadow:0 0 12px rgba(66,133,244,0.4)}.ev-google .connector{background:rgba(66,133,244,0.3)}
+.ev-meta .event-card::before{background:var(--meta)}.ev-meta .event-card:hover{box-shadow:0 8px 30px rgba(6,104,225,0.2)}.ev-meta .company-badge{color:var(--meta);border-color:var(--meta)}.ev-meta .node{background:var(--meta);box-shadow:0 0 12px rgba(6,104,225,0.4)}.ev-meta .connector{background:rgba(6,104,225,0.3)}
+.ev-deepseek .event-card::before{background:var(--deepseek)}.ev-deepseek .event-card:hover{box-shadow:0 8px 30px rgba(91,110,225,0.2)}.ev-deepseek .company-badge{color:var(--deepseek);border-color:var(--deepseek)}.ev-deepseek .node{background:var(--deepseek);box-shadow:0 0 12px rgba(91,110,225,0.4)}.ev-deepseek .connector{background:rgba(91,110,225,0.3)}
+.ev-openclaw .event-card::before{background:var(--openclaw)}.ev-openclaw .event-card:hover{box-shadow:0 8px 30px rgba(255,107,53,0.2)}.ev-openclaw .company-badge{color:var(--openclaw);border-color:var(--openclaw)}.ev-openclaw .node{background:var(--openclaw);box-shadow:0 0 12px rgba(255,107,53,0.4)}.ev-openclaw .connector{background:rgba(255,107,53,0.3)}
+.ev-other .event-card::before{background:var(--other)}.ev-other .event-card:hover{box-shadow:0 8px 30px rgba(167,139,250,0.2)}.ev-other .company-badge{color:var(--other);border-color:var(--other)}.ev-other .node{background:var(--other);box-shadow:0 0 12px rgba(167,139,250,0.4)}.ev-other .connector{background:rgba(167,139,250,0.3)}
+.ev-academic .event-card::before{background:var(--academic)}.ev-academic .event-card:hover{box-shadow:0 8px 30px rgba(110,231,183,0.2)}.ev-academic .company-badge{color:var(--academic);border-color:var(--academic)}.ev-academic .node{background:var(--academic);box-shadow:0 0 12px rgba(110,231,183,0.4)}.ev-academic .connector{background:rgba(110,231,183,0.3)}
+.ev-ibm .event-card::before{background:var(--ibm)}.ev-ibm .event-card:hover{box-shadow:0 8px 30px rgba(224,93,68,0.2)}.ev-ibm .company-badge{color:var(--ibm);border-color:var(--ibm)}.ev-ibm .node{background:var(--ibm);box-shadow:0 0 12px rgba(224,93,68,0.4)}.ev-ibm .connector{background:rgba(224,93,68,0.3)}
+
+/* Spacing: dense eras get LESS vertical margin so cards stack tighter = feels faster */
+.event[data-era="sparse"]{margin-bottom:48px}
+.event[data-era="moderate"]{margin-bottom:28px}
+.event[data-era="dense"]{margin-bottom:10px}
+
+/* ── BOTTOM ANCHOR (start of time) ─── */
+.time-origin{position:relative;z-index:10;text-align:center;padding:120px 20px 60px;clear:both}
+.time-origin h2{font-size:1.5rem;font-weight:300;color:var(--text-dim);margin-bottom:8px}
+.time-origin .year-big{font-size:5rem;font-weight:900;background:linear-gradient(135deg,var(--academic),#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+.time-origin .scroll-up{margin-top:24px;color:var(--text-dim);font-size:0.8rem;opacity:0.5;animation:bob 2s ease-in-out infinite}
+
+/* ── MODAL ────────────────────────────── */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);backdrop-filter:blur(10px);z-index:1000;justify-content:center;align-items:center;padding:20px}
+.modal-overlay.open{display:flex}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:18px;max-width:520px;width:100%;padding:28px;position:relative;animation:modalIn 0.25s ease}
+@keyframes modalIn{from{opacity:0;transform:scale(0.95) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.modal-close{position:absolute;top:10px;right:14px;background:none;border:none;color:var(--text-dim);font-size:1.5rem;cursor:pointer;line-height:1}
+.modal-close:hover{color:#fff}
+.modal h2{font-size:1.15rem;margin-bottom:4px}
+.modal .modal-date{color:var(--text-dim);font-size:0.8rem;margin-bottom:12px}
+.modal .modal-desc{color:var(--text-dim);line-height:1.65;font-size:0.88rem;margin-bottom:18px}
+.modal-link{display:inline-flex;align-items:center;gap:6px;padding:9px 20px;border-radius:10px;background:linear-gradient(135deg,#a78bfa,#d4a574);color:#111;font-weight:600;font-size:0.85rem;text-decoration:none;transition:opacity 0.2s}
+.modal-link:hover{opacity:0.85}
+.modal-link svg{width:14px;height:14px}
+
+/* ── CHART VIEW ────────────────────────── */
+.chart-overlay{display:none;position:fixed;inset:0;z-index:900;background:var(--bg);overflow-y:auto}
+.chart-overlay.open{display:block}
+.chart-container{max-width:800px;margin:0 auto;padding:60px 30px 80px;text-align:center}
+.chart-container h2{font-size:1.4rem;font-weight:700;margin-bottom:4px}
+.chart-container .chart-subtitle{color:var(--text-dim);font-size:0.88rem;margin-bottom:24px}
+.chart-box{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px}
+canvas#accelChart{width:100%!important;height:auto!important;max-height:360px}
+.stats-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:20px}
+.stat-card{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:16px 24px;text-align:center;min-width:150px}
+.stat-card .num{font-size:1.6rem;font-weight:800}
+.stat-card .label{font-size:0.72rem;color:var(--text-dim);display:block;margin-top:2px}
+.chart-insight{margin-top:20px}
+.chart-insight .big-num{font-size:2.5rem;font-weight:900;background:linear-gradient(135deg,#a78bfa,#d4a574);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.chart-insight .insight-label{color:var(--text-dim);font-size:0.85rem;display:block;margin-top:2px}
+.chart-close{position:fixed;top:20px;right:24px;z-index:910;background:var(--surface2);border:1px solid var(--border);color:var(--text);width:40px;height:40px;border-radius:50%;font-size:1.3rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color 0.2s}
+.chart-close:hover{border-color:#555}
+
+/* Chart toggle button */
+.chart-toggle{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:50;padding:8px 22px;border-radius:24px;border:1px solid var(--border);background:rgba(6,6,12,0.85);backdrop-filter:blur(12px);color:var(--text-dim);font-family:inherit;font-size:0.78rem;font-weight:600;cursor:pointer;transition:all 0.25s;display:flex;align-items:center;gap:6px}
+.chart-toggle:hover{border-color:#555;color:var(--text)}
+.chart-toggle svg{width:16px;height:16px}
+
+/* ── CLEARFIX ────────────────────────── */
+.clearfix::after{content:'';display:table;clear:both}
+
+/* ── RESPONSIVE ──────────────────────── */
+@media(max-width:700px){
+  .spine{left:24px}
+  .event,.event.left,.event.right{float:none;width:calc(100% - 60px);margin-left:60px;text-align:left;padding-left:0;padding-right:0}
+  .event.left .node,.event.right .node{left:-44px;right:auto}
+  .event.left .connector,.event.right .connector{left:-30px;right:auto}
+  .event.left .node-date,.event.right .node-date{left:-90px;right:auto;text-align:right}
+  .progress-track,.progress-year{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="parallax-space">
+  <div class="star-layer"><canvas id="stars1"></canvas></div>
+  <div class="star-layer" style="opacity:0.5"><canvas id="stars2"></canvas></div>
+</div>
+<div class="nebula" id="nebula1"></div>
+<div class="nebula" id="nebula2"></div>
+<div class="nebula" id="nebula3"></div>
+<div class="grid-overlay" id="grid-overlay"></div>
+<div class="speed-lines" id="speed-lines"></div>
+
+<div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+<div class="progress-year" id="progress-year"></div>
+
+<!-- TOP = Present/Future -->
+<div class="top-header" id="top-header">
+  <h1>The Complete<br>History of AI</h1>
+  <p>Scroll down to begin at 1950 — then scroll back up through 75 years of breakthroughs to the present day</p>
+  <div class="arrow-down"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></div>
+  <a href="https://reginaflores.ai" target="_blank" rel="noopener" style="margin-top:24px;font-size:0.75rem;color:var(--text-dim);text-decoration:none;letter-spacing:0.08em;opacity:0.6;transition:opacity 0.3s" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'">reginaflores.ai</a>
+</div>
+
+<nav class="filters" id="filters"></nav>
+
+<div class="timeline clearfix" id="timeline">
+  <div class="spine"></div>
+</div>
+
+<div class="time-origin" id="time-origin">
+  <h2>Where it all began</h2>
+  <div class="year-big">1950</div>
+  <div class="scroll-up">↑ scroll up to travel through time ↑</div>
+</div>
+
+<!-- Chart toggle button -->
+<button class="chart-toggle" id="chart-toggle" onclick="toggleChart()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 16l4-8 4 4 6-10"/></svg>
+  Acceleration Chart
+</button>
+
+<!-- Chart overlay -->
+<div class="chart-overlay" id="chart-overlay">
+  <button class="chart-close" id="chart-close" onclick="toggleChart()">&times;</button>
+  <div class="chart-container">
+    <h2>The Pace is Accelerating</h2>
+    <p class="chart-subtitle">Major AI milestones per year — the exponential curve</p>
+    <div class="chart-box"><canvas id="accelChart"></canvas></div>
+    <div class="stats-row">
+      <div class="stat-card"><span class="num" style="color:var(--academic)" id="stat-decades">&mdash;</span><span class="label">Milestones 1950&ndash;2019 (69 years)</span></div>
+      <div class="stat-card"><span class="num" style="color:var(--anthropic)" id="stat-recent">&mdash;</span><span class="label">Milestones 2020&ndash;2026 (6 years)</span></div>
+    </div>
+    <div class="chart-insight">
+      <span class="big-num" id="stat-ratio">&mdash;</span>
+      <span class="insight-label">times more milestones per year in the 2020s vs all prior decades</span>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal">
+    <button class="modal-close" id="modal-close">&times;</button>
+    <div id="modal-badge" style="margin-bottom:8px"></div>
+    <h2 id="modal-title"></h2>
+    <div class="modal-date" id="modal-date"></div>
+    <div class="modal-desc" id="modal-desc"></div>
+    <a class="modal-link" id="modal-link" href="#" target="_blank" rel="noopener">
+      Read the full story
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+    </a>
+  </div>
+</div>
+
+<script>
+// ─── DATA (newest first — reversed for display bottom=oldest, top=newest) ────
+const events = [
+  // ── 1950s ──
+  {date:"1950-10-01",title:"Turing's \"Computing Machinery and Intelligence\"",company:"academic",desc:"Alan Turing publishes his landmark paper proposing the Imitation Game (the Turing Test), asking: \"Can machines think?\" This foundational work frames the entire field of AI.",url:"https://en.wikipedia.org/wiki/Computing_Machinery_and_Intelligence"},
+  {date:"1956-08-31",title:"Dartmouth Conference",company:"academic",desc:"John McCarthy, Marvin Minsky, Claude Shannon, and Nathaniel Rochester coin \"Artificial Intelligence\" at Dartmouth College. The modern field is born.",url:"https://en.wikipedia.org/wiki/Dartmouth_workshop"},
+  {date:"1958-07-01",title:"The Perceptron",company:"academic",desc:"Frank Rosenblatt builds the Mark I Perceptron — the first neural network in hardware.",url:"https://en.wikipedia.org/wiki/Perceptron"},
+  // ── 1960s ──
+  {date:"1966-01-01",title:"ELIZA — First Chatbot",company:"academic",desc:"Joseph Weizenbaum at MIT creates ELIZA, simulating a psychotherapist via pattern matching. The first viral AI moment.",url:"https://en.wikipedia.org/wiki/ELIZA"},
+  {date:"1966-11-01",title:"Shakey the Robot",company:"academic",desc:"SRI builds Shakey — the first robot to perceive its environment, plan, and navigate autonomously.",url:"https://en.wikipedia.org/wiki/Shakey_the_robot"},
+  // ── 1970s ──
+  {date:"1972-01-01",title:"MYCIN Expert System",company:"academic",desc:"Stanford develops MYCIN, diagnosing blood infections better than many doctors. Never deployed.",url:"https://en.wikipedia.org/wiki/Mycin"},
+  {date:"1973-10-01",title:"Lighthill Report — First AI Winter",company:"academic",desc:"A devastating government critique triggers massive funding cuts. The first AI Winter begins.",url:"https://en.wikipedia.org/wiki/Lighthill_report"},
+  // ── 1980s ──
+  {date:"1980-01-01",title:"Expert Systems Boom",company:"academic",desc:"Billions flow into expert systems. Japan launches Fifth Generation. AI becomes commercial.",url:"https://en.wikipedia.org/wiki/Expert_system"},
+  {date:"1986-07-01",title:"Backpropagation Rediscovered",company:"academic",desc:"Rumelhart, Hinton & Williams publish backprop — the mathematical foundation for all modern deep learning.",url:"https://en.wikipedia.org/wiki/Backpropagation"},
+  {date:"1987-01-01",title:"Second AI Winter",company:"academic",desc:"Expert systems fail to generalize. The Lisp machine market collapses. Funding dries up for a decade.",url:"https://en.wikipedia.org/wiki/AI_winter"},
+  // ── 1990s ──
+  {date:"1997-05-11",title:"Deep Blue Defeats Kasparov",company:"ibm",desc:"IBM's Deep Blue defeats the world chess champion, making global headlines and reigniting public fascination with AI.",url:"https://en.wikipedia.org/wiki/Deep_Blue_versus_Garry_Kasparov"},
+  {date:"1997-11-01",title:"LSTM Networks Invented",company:"academic",desc:"Hochreiter & Schmidhuber solve the vanishing gradient problem. LSTMs power speech recognition for 20 years.",url:"https://en.wikipedia.org/wiki/Long_short-term_memory"},
+  // ── 2000s ──
+  {date:"2006-07-01",title:"Hinton's Deep Learning Breakthrough",company:"academic",desc:"Geoffrey Hinton reignites neural nets with layer-by-layer training, earning the title \"Godfather of AI.\"",url:"https://en.wikipedia.org/wiki/Deep_learning"},
+  {date:"2007-06-23",title:"Nvidia CUDA Released",company:"other",desc:"Nvidia releases CUDA, enabling general-purpose GPU computing. This will become the backbone of all deep learning training — the picks and shovels of the AI gold rush.",url:"https://en.wikipedia.org/wiki/CUDA"},
+  {date:"2009-01-01",title:"ImageNet Created",company:"academic",desc:"Fei-Fei Li releases 14 million labeled images. The benchmark that will ignite the deep learning revolution.",url:"https://en.wikipedia.org/wiki/ImageNet"},
+  // ── 2010s ──
+  {date:"2011-02-14",title:"Watson Wins Jeopardy!",company:"ibm",desc:"IBM's Watson defeats champions Ken Jennings and Brad Rutter on national television.",url:"https://en.wikipedia.org/wiki/Watson_(computer)#Jeopardy!"},
+  {date:"2011-10-04",title:"Siri Launches",company:"other",desc:"Apple introduces Siri with the iPhone 4S — the first mainstream AI voice assistant. It puts AI in millions of pockets overnight.",url:"https://en.wikipedia.org/wiki/Siri"},
+  {date:"2012-09-30",title:"AlexNet — Deep Learning Moment",company:"academic",desc:"Krizhevsky & Hinton crush ImageNet with deep CNNs and GPUs. Error drops by half. The deep learning era begins.",url:"https://en.wikipedia.org/wiki/AlexNet"},
+  {date:"2014-06-01",title:"GANs Invented",company:"academic",desc:"Ian Goodfellow introduces Generative Adversarial Networks — the foundation of AI image generation.",url:"https://en.wikipedia.org/wiki/Generative_adversarial_network"},
+  {date:"2015-06-01",title:"Google Deep Dream",company:"google",desc:"Neural network visualizations go viral. Psychedelic AI art enters public consciousness.",url:"https://en.wikipedia.org/wiki/DeepDream"},
+  {date:"2015-12-11",title:"OpenAI Founded",company:"openai",desc:"Sam Altman, Elon Musk, and others found OpenAI as a nonprofit AI research lab with $1B in pledged funding, aiming to ensure AI benefits all of humanity.",url:"https://en.wikipedia.org/wiki/OpenAI"},
+  {date:"2016-03-15",title:"AlphaGo Defeats Lee Sedol",company:"google",desc:"DeepMind's AlphaGo wins 4-1. Move 37 is called the most beautiful AI moment ever.",url:"https://en.wikipedia.org/wiki/AlphaGo_versus_Lee_Sedol"},
+  {date:"2017-06-12",title:"\"Attention Is All You Need\"",company:"google",desc:"The Transformer paper. Self-attention will power GPT, BERT, and every major LLM that follows.",url:"https://en.wikipedia.org/wiki/Transformer_(deep_learning_architecture)"},
+  {date:"2018-03-17",title:"Cambridge Analytica Scandal",company:"other",desc:"Millions of Facebook profiles harvested for ML-powered psychographic targeting during the 2016 election. Congressional hearings follow. GDPR accelerates. The world wakes up to AI's dark side.",url:"https://en.wikipedia.org/wiki/Facebook%E2%80%93Cambridge_Analytica_data_scandal"},
+  {date:"2018-10-11",title:"BERT Released",company:"google",desc:"Google's bidirectional transformer revolutionizes NLP and dramatically improves Search.",url:"https://en.wikipedia.org/wiki/BERT_(language_model)"},
+  {date:"2019-02-14",title:"GPT-2 — \"Too Dangerous to Release\"",company:"openai",desc:"1.5B parameters. Text so convincing OpenAI initially withholds the full model.",url:"https://openai.com/index/gpt-2-1-5b-release/"},
+  // ── 2020 ──
+  {date:"2020-06-11",title:"GPT-3 — 175B Parameters",company:"openai",desc:"175 billion parameters. Few-shot learning. The AGI conversation gets serious.",url:"https://en.wikipedia.org/wiki/GPT-3"},
+  {date:"2020-11-30",title:"AlphaFold 2 Solves Protein Folding",company:"google",desc:"DeepMind's AlphaFold 2 solves the 50-year protein-folding problem, predicting 3D structures with atomic accuracy. Later wins the Nobel Prize in Chemistry.",url:"https://en.wikipedia.org/wiki/AlphaFold"},
+  // ── 2021 ──
+  {date:"2021-01-05",title:"DALL·E — Text to Images",company:"openai",desc:"Describe a picture, watch AI create it. Imagination becomes visual through language.",url:"https://openai.com/index/dall-e/"},
+  {date:"2021-06-29",title:"GitHub Copilot Preview",company:"other",desc:"GitHub and OpenAI launch Copilot — an AI pair programmer that autocompletes code in real time. The first mainstream AI coding tool changes how developers work.",url:"https://en.wikipedia.org/wiki/GitHub_Copilot"},
+  {date:"2021-09-01",title:"Anthropic Founded",company:"anthropic",desc:"Dario and Daniela Amodei leave OpenAI to found Anthropic, focused on AI safety research. They pioneer Constitutional AI — training AI systems to be helpful, harmless, and honest.",url:"https://en.wikipedia.org/wiki/Anthropic"},
+  // ── 2022 ──
+  {date:"2022-04-06",title:"DALL·E 2",company:"openai",desc:"A massive leap in AI image generation quality. Photorealistic images from text prompts become possible for the first time.",url:"https://openai.com/index/dall-e-2/"},
+  {date:"2022-07-12",title:"Midjourney Beta Launches",company:"other",desc:"Midjourney opens its beta on Discord. AI-generated art goes mainstream as users create stunning images through simple text prompts. An entire creative movement is born.",url:"https://en.wikipedia.org/wiki/Midjourney"},
+  {date:"2022-07-22",title:"AlphaFold Database — 200M Proteins",company:"google",desc:"DeepMind releases predicted structures for virtually every protein known to science — over 200 million. Freely available to researchers worldwide.",url:"https://alphafold.ebi.ac.uk/"},
+  {date:"2022-08-22",title:"Stable Diffusion Open-Sourced",company:"other",desc:"Stability AI open-sources high-quality image generation. An explosion of AI art tools follows.",url:"https://en.wikipedia.org/wiki/Stable_Diffusion"},
+  {date:"2022-09-21",title:"Whisper — Open-Source Speech AI",company:"openai",desc:"OpenAI open-sources Whisper, a speech recognition model trained on 680,000 hours of audio. It approaches human-level transcription accuracy across dozens of languages.",url:"https://openai.com/index/whisper/"},
+  {date:"2022-11-30",title:"ChatGPT Launches",company:"openai",desc:"100 million users in two months. The fastest-growing app in history. The generative AI era officially begins.",url:"https://openai.com/index/chatgpt/"},
+  // ── 2023 ──
+  {date:"2023-02-06",title:"Google Announces Bard",company:"google",desc:"Google's response to ChatGPT. The Big Tech AI race is on.",url:"https://blog.google/technology/ai/bard-google-ai-search-updates/"},
+  {date:"2023-02-07",title:"Bing AI — Microsoft + OpenAI",company:"other",desc:"Microsoft integrates GPT-4 into Bing Search and Edge browser. The $13B OpenAI partnership reshapes the search landscape and the tech industry.",url:"https://en.wikipedia.org/wiki/Microsoft_Bing#AI-powered_Bing"},
+  {date:"2023-03-14",title:"GPT-4 Released",company:"openai",desc:"First large multimodal model. Images + text. Scores 90th percentile on the bar exam.",url:"https://openai.com/index/gpt-4/"},
+  {date:"2023-03-14",title:"Claude 1 Released",company:"anthropic",desc:"Anthropic's first public AI. Constitutional AI enters the world.",url:"https://www.anthropic.com/news/introducing-claude"},
+  {date:"2023-07-11",title:"Claude 2 — Public Access",company:"anthropic",desc:"100K context window. First Anthropic model on claude.ai.",url:"https://www.anthropic.com/news/claude-2"},
+  {date:"2023-07-18",title:"Llama 2 Open-Sourced",company:"meta",desc:"Meta open-sources Llama 2. The open-weight movement begins.",url:"https://ai.meta.com/llama/"},
+  {date:"2023-09-27",title:"Mistral 7B Released",company:"other",desc:"French startup Mistral AI releases a 7B-parameter model that outperforms much larger models. Europe enters the LLM race. Open-source gets more competitive.",url:"https://en.wikipedia.org/wiki/Mistral_AI"},
+  {date:"2023-11-06",title:"GPT-4 Turbo + DALL·E 3",company:"openai",desc:"OpenAI's DevDay: GPT-4 Turbo with 128K context, DALL·E 3 integration, and custom GPTs. Sam Altman is fired by the board 11 days later.",url:"https://en.wikipedia.org/wiki/GPT-4"},
+  {date:"2023-11-17",title:"Sam Altman Fired & Rehired",company:"openai",desc:"OpenAI's board fires Sam Altman. Microsoft offers him a job. 95% of employees threaten to quit. Five days of chaos end with Altman reinstated and a new board. The most dramatic week in tech history.",url:"https://en.wikipedia.org/wiki/Removal_of_Sam_Altman_from_OpenAI"},
+  {date:"2023-12-06",title:"Gemini 1.0",company:"google",desc:"Google DeepMind's first natively multimodal model in three sizes.",url:"https://blog.google/technology/ai/google-gemini-ai/"},
+  // ── 2024 ──
+  {date:"2024-02-15",title:"Sora Previewed",company:"openai",desc:"60-second AI-generated videos from text. The creative world is stunned.",url:"https://openai.com/index/sora/"},
+  {date:"2024-03-04",title:"Claude 3 Family",company:"anthropic",desc:"Haiku, Sonnet, Opus. New benchmarks in reasoning and coding.",url:"https://www.anthropic.com/news/claude-3-family"},
+  {date:"2024-04-18",title:"Llama 3",company:"meta",desc:"Open-source approaches frontier quality.",url:"https://ai.meta.com/blog/meta-llama-3/"},
+  {date:"2024-05-13",title:"GPT-4o — Omni",company:"openai",desc:"Voice, vision, text in one model. Real-time voice AI arrives.",url:"https://openai.com/index/hello-gpt-4o/"},
+  {date:"2024-06-10",title:"Apple Intelligence Announced",company:"other",desc:"Apple announces Apple Intelligence at WWDC — integrating AI into iOS, macOS, and Siri with on-device models and a partnership with OpenAI. AI goes to 2 billion Apple devices.",url:"https://en.wikipedia.org/wiki/Apple_Intelligence"},
+  {date:"2024-06-20",title:"Claude 3.5 Sonnet",company:"anthropic",desc:"Opus-level performance at Sonnet pricing. Best coding model.",url:"https://www.anthropic.com/news/claude-3-5-sonnet"},
+  {date:"2024-08-01",title:"EU AI Act Takes Effect",company:"other",desc:"The world's first comprehensive AI law enters force. It classifies AI systems by risk level and bans certain uses like social scoring. The regulatory era of AI begins.",url:"https://en.wikipedia.org/wiki/Artificial_Intelligence_Act"},
+  {date:"2024-09-12",title:"OpenAI o1 — Reasoning",company:"openai",desc:"Step-by-step reasoning. PhD-level science and math.",url:"https://openai.com/index/learning-to-reason-with-llms/"},
+  {date:"2024-09-18",title:"Cursor AI Coding Boom",company:"other",desc:"Cursor, an AI-native code editor, raises $60M as AI coding tools reshape software development. Millions of developers adopt AI-assisted coding workflows.",url:"https://www.cursor.com/"},
+  {date:"2024-10-08",title:"Nobel Prizes for AI",company:"academic",desc:"Geoffrey Hinton wins the Nobel Prize in Physics for neural networks. A week later, Demis Hassabis wins Chemistry for AlphaFold. AI research is recognized as transforming science itself.",url:"https://en.wikipedia.org/wiki/2024_Nobel_Prize_in_Physics"},
+  {date:"2024-10-29",title:"Claude Computer Use",company:"anthropic",desc:"Anthropic launches Claude's ability to see and interact with computer screens — clicking, typing, and navigating software autonomously. AI moves from text to action.",url:"https://www.anthropic.com/news/3-5-sonnet-computer-use"},
+  {date:"2024-11-25",title:"Model Context Protocol (MCP)",company:"anthropic",desc:"Anthropic open-sources MCP, a universal standard for connecting AI to external tools and data sources. It becomes the \"USB port for AI\" — adopted across the industry.",url:"https://www.anthropic.com/news/model-context-protocol"},
+  {date:"2024-12-09",title:"Gemini 2.0 Flash",company:"google",desc:"Native image gen + real-time multimodal streaming.",url:"https://blog.google/technology/google-deepmind/google-gemini-ai-update-december-2024/"},
+  // ── 2025 ──
+  {date:"2025-01-20",title:"DeepSeek-R1",company:"deepseek",desc:"Open-source reasoning matching o1. #1 on the U.S. App Store. A Chinese startup shakes the AI world.",url:"https://api-docs.deepseek.com/news/news250120"},
+  {date:"2025-02-24",title:"Claude Code Launches",company:"anthropic",desc:"Agentic CLI coding from the terminal. Developers delegate entire programming tasks to AI.",url:"https://www.anthropic.com/news/claude-code"},
+  {date:"2025-03-25",title:"Gemini 2.5 Pro",company:"google",desc:"Deep Think mode. Top of LMArena benchmarks.",url:"https://blog.google/technology/google-deepmind/gemini-model-thinking-updates-march-2025/"},
+  {date:"2025-05-22",title:"Claude 4 & Sonnet 4",company:"anthropic",desc:"The Claude 4 generation. Agentic tool use at unprecedented scale.",url:"https://www.anthropic.com/news/claude-4"},
+  {date:"2025-07-23",title:"Llama 4 — 10M Context",company:"meta",desc:"10-million-token context for open-source.",url:"https://ai.meta.com/blog/llama-4/"},
+  {date:"2025-08-07",title:"GPT-5",company:"openai",desc:"Major leaps in reasoning and scientific problem-solving.",url:"https://openai.com/index/gpt-5/"},
+  {date:"2025-09-09",title:"Claude Sonnet 4.5",company:"anthropic",desc:"77.2% on SWE-bench. Highest ever. Coding AI leader.",url:"https://www.anthropic.com/news/claude-sonnet-4-5"},
+  {date:"2025-11-14",title:"OpenClaw Launches",company:"other",desc:"Open-source AI agent goes viral. 247K GitHub stars.",url:"https://github.com/openclaw/openclaw"},
+  {date:"2025-11-17",title:"Grok 4.1 by xAI",company:"other",desc:"Four flagships in 25 days begins. xAI enters the frontier race.",url:"https://x.ai/"},
+  {date:"2025-11-18",title:"Gemini 3.0",company:"google",desc:"Next-gen multimodal. One day after Grok.",url:"https://blog.google/technology/google-deepmind/"},
+  {date:"2025-11-24",title:"Claude Opus 4.5",company:"anthropic",desc:"November model rush. Head-to-head with all flagships.",url:"https://www.anthropic.com/news"},
+  {date:"2025-11-25",title:"Codex-Max",company:"openai",desc:"Codebase understanding and multi-file reasoning.",url:"https://openai.com/"},
+  {date:"2025-12-11",title:"GPT-5.2",company:"openai",desc:"Closes the 25-day four-flagship sprint.",url:"https://openai.com/"},
+  // ── 2026 ──
+  {date:"2026-01-30",title:"OpenClaw Rebrands",company:"other",desc:"Clawdbot → Moltbot → OpenClaw. 247K stars.",url:"https://github.com/openclaw/openclaw"},
+  {date:"2026-02-05",title:"Claude Opus 4.6",company:"anthropic",desc:"1M-token context. Agentic capabilities. Cowork mode for desktop automation.",url:"https://www.anthropic.com/news/claude-opus-4-6"},
+  {date:"2026-02-20",title:"AlphaEvolve",company:"google",desc:"Autonomous code optimization via evolutionary strategies.",url:"https://deepmind.google/discover/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/"},
+  {date:"2026-03-06",title:"GPT Open-Source Models",company:"openai",desc:"gpt-oss-120b and gpt-oss-20b. OpenAI goes open-source.",url:"https://openai.com/"},
+  {date:"2026-04-02",title:"Gemma 4 — Open-Source Edge AI",company:"google",desc:"Google releases Gemma 4 under Apache 2.0. Four model sizes with 256K context, native vision and audio, 140+ languages — running offline on phones, Raspberry Pi, and edge devices. Over 400M downloads across the Gemma family.",url:"https://blog.google/innovation-and-ai/technology/developers-tools/gemma-4/"},
+  {date:"2026-04-07",title:"Claude Mythos Preview",company:"anthropic",desc:"Anthropic previews Mythos, a frontier model surpassing Opus 4.6 in reasoning and agentic coding. Deployed via Project Glasswing — a cybersecurity initiative with Apple, Amazon, Microsoft, and others — it discovers thousands of zero-day vulnerabilities across critical systems.",url:"https://techcrunch.com/2026/04/07/anthropic-mythos-ai-model-preview-security/"},
+];
+
+events.sort((a,b)=>new Date(a.date)-new Date(b.date));
+
+const companyNames={anthropic:"Anthropic",openai:"OpenAI",google:"Google DeepMind",meta:"Meta",deepseek:"DeepSeek",openclaw:"OpenClaw",other:"Other",academic:"Academic",ibm:"IBM"};
+
+// Density: count events within ±2 years
+const yearCounts={};
+events.forEach(e=>{const y=parseInt(e.date);yearCounts[y]=(yearCounts[y]||0)+1;});
+function getDensity(date){
+  const yr=parseInt(date);let n=0;
+  for(let y=yr-2;y<=yr+2;y++)n+=(yearCounts[y]||0);
+  if(n>=8)return"dense";if(n>=3)return"moderate";return"sparse";
+}
+
+// Eras
+const eras=[
+  {before:"1950-10-01",label:"The Birth of AI",range:"1950s"},
+  {before:"1966-01-01",label:"Early Optimism",range:"1960s"},
+  {before:"1973-10-01",label:"AI Winters",range:"1970s – 1980s"},
+  {before:"1997-05-11",label:"Revival",range:"1990s – 2000s"},
+  {before:"2012-09-30",label:"Deep Learning Era",range:"2010s"},
+  {before:"2022-11-30",label:"The Generative AI Explosion",range:"2022 – Present"},
+];
+
+// ─── BUILD TIMELINE (reversed: newest at top, oldest at bottom) ──
+const timeline=document.getElementById("timeline");
+const reversed=[...events].reverse();
+let side=0;
+let lastEraIdx=-1;
+
+reversed.forEach((ev,ri)=>{
+  const origIdx=events.length-1-ri;
+
+  // Check if we need an era divider
+  for(let ei=eras.length-1;ei>=0;ei--){
+    if(ev.date<=eras[ei].before && ei!==lastEraIdx){
+      // Only insert if we haven't already
+      const alreadyInserted=timeline.querySelector(`[data-era-idx="${ei}"]`);
+      if(!alreadyInserted){
+        const div=document.createElement("div");
+        div.className="era-divider";div.dataset.eraIdx=ei;div.style.clear="both";
+        div.innerHTML=`<span class="era-tag">${eras[ei].label}<span class="era-year-range">${eras[ei].range}</span></span>`;
+        timeline.appendChild(div);
+        lastEraIdx=ei;
+      }
+      break;
+    }
+  }
+
+  const el=document.createElement("div");
+  const density=getDensity(ev.date);
+  const sideClass=(side%2===0)?"left":"right";
+  side++;
+  el.className=`event ev-${ev.company} ${sideClass}`;
+  el.dataset.company=ev.company;
+  el.dataset.index=origIdx;
+  el.dataset.era=density;
+
+  const d=new Date(ev.date+"T12:00:00");
+  const yr=d.getFullYear();
+  const mon=d.toLocaleDateString("en-US",{month:"short"});
+  const day=d.getDate();
+  const dateLine1=yr<2020?"":`${mon} ${day}`;
+  const dateLine2=yr.toString();
+
+  el.innerHTML=`
+    <div class="event-card" onclick="openModal(${origIdx})">
+      <div class="event-title">${ev.title}</div>
+      <div class="event-desc">${ev.desc}</div>
+      <span class="company-badge">${companyNames[ev.company]}</span>
+      <span class="click-hint">Read more →</span>
+    </div>
+    <div class="connector"></div>
+    <div class="node" onclick="openModal(${origIdx})"></div>
+    <div class="node-date">${dateLine1?dateLine1+"<br>":""}${dateLine2}</div>`;
+  timeline.appendChild(el);
+});
+
+// ─── SCROLL TO BOTTOM ON LOAD ───────────────────────────────────
+window.addEventListener("load",()=>{
+  window.scrollTo(0,document.body.scrollHeight);
+  // Small delay then re-trigger to ensure it worked
+  setTimeout(()=>window.scrollTo(0,document.body.scrollHeight),100);
+});
+
+// ─── SCROLL-TRIGGERED ANIMATIONS ────────────────────────────────
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("visible")});
+},{threshold:0.1,rootMargin:"0px 0px -50px 0px"});
+document.querySelectorAll(".event").forEach(el=>observer.observe(el));
+
+// ─── PARALLAX + EFFECTS ON SCROLL ───────────────────────────────
+const gridOverlay=document.getElementById("grid-overlay");
+const speedLines=document.getElementById("speed-lines");
+const progressFill=document.getElementById("progress-fill");
+const progressYear=document.getElementById("progress-year");
+const nebula1=document.getElementById("nebula1");
+const nebula2=document.getElementById("nebula2");
+const nebula3=document.getElementById("nebula3");
+
+// Speed lines
+for(let i=0;i<15;i++){
+  const l=document.createElement("div");l.className="speed-line";
+  l.style.top=(5+Math.random()*90)+"%";
+  l.style.opacity=(0.3+Math.random()*0.7);
+  speedLines.appendChild(l);
+}
+
+let lastScroll=0,velocity=0;
+
+function onScroll(){
+  const st=window.scrollY;
+  const maxScroll=document.body.scrollHeight-window.innerHeight;
+  const progress=1-(st/maxScroll); // 0=top(present), 1=bottom(past)
+  const timeProgress=1-progress; // 0=past, 1=present
+
+  velocity=Math.abs(st-lastScroll);
+  lastScroll=st;
+
+  // Progress bar
+  progressFill.style.height=(timeProgress*100)+"%";
+
+  // Current year estimate
+  const yearRange=2026-1950;
+  const currentYear=Math.round(1950+timeProgress*yearRange);
+  progressYear.textContent=currentYear;
+
+  // Nebulas fade in as we approach modern era
+  nebula1.style.opacity=Math.max(0,timeProgress-0.3)*0.8;
+  nebula2.style.opacity=Math.max(0,timeProgress-0.5)*1;
+  nebula3.style.opacity=Math.max(0,timeProgress-0.7)*1;
+
+  // Grid overlay intensifies near present
+  gridOverlay.style.opacity=Math.max(0,(timeProgress-0.6))*0.6;
+
+  // Speed lines on fast scroll near dense areas
+  speedLines.style.opacity=(velocity>15&&timeProgress>0.5)?Math.min(1,velocity/60):0;
+
+  // Star parallax
+  const s1=document.getElementById("stars1");
+  const s2=document.getElementById("stars2");
+  s1.style.transform=`translateY(${st*0.05}px)`;
+  s2.style.transform=`translateY(${st*0.12}px)`;
+}
+
+window.addEventListener("scroll",onScroll,{passive:true});
+requestAnimationFrame(onScroll);
+
+// ─── FILTERS ────────────────────────────────────────────────────
+const filterContainer=document.getElementById("filters");
+["all",...new Set(events.map(e=>e.company))].forEach(c=>{
+  const btn=document.createElement("button");
+  btn.className="filter-btn"+(c==="all"?" active":"");
+  btn.dataset.filter=c;
+  btn.textContent=c==="all"?"All":companyNames[c]||c;
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll(".filter-btn").forEach(b=>b.classList.toggle("active",b.dataset.filter===c));
+    document.querySelectorAll(".event").forEach(el=>{
+      el.classList.toggle("hidden-filter",c!=="all"&&el.dataset.company!==c);
+    });
+  });
+  filterContainer.appendChild(btn);
+});
+
+// ─── MODAL ──────────────────────────────────────────────────────
+const overlay=document.getElementById("modal-overlay");
+function openModal(i){
+  const ev=events[i];const d=new Date(ev.date+"T12:00:00");
+  const ds=d.getFullYear()<2000?d.getFullYear().toString():d.toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric",year:"numeric"});
+  document.getElementById("modal-badge").innerHTML=`<span class="company-badge" style="color:var(--${ev.company});border-color:var(--${ev.company})">${companyNames[ev.company]}</span>`;
+  document.getElementById("modal-title").textContent=ev.title;
+  document.getElementById("modal-date").textContent=ds;
+  document.getElementById("modal-desc").textContent=ev.desc;
+  document.getElementById("modal-link").href=ev.url;
+  overlay.classList.add("open");
+}
+document.getElementById("modal-close").addEventListener("click",()=>overlay.classList.remove("open"));
+overlay.addEventListener("click",e=>{if(e.target===overlay)overlay.classList.remove("open")});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")overlay.classList.remove("open")});
+
+// ─── STARFIELD ──────────────────────────────────────────────────
+// ─── CHART ──────────────────────────────────────────────────────
+function toggleChart(){
+  const co=document.getElementById("chart-overlay");
+  co.classList.toggle("open");
+  if(co.classList.contains("open"))drawChart();
+}
+
+let chartDrawn=false;
+function drawChart(){
+  if(chartDrawn)return;chartDrawn=true;
+  const counts={};
+  events.forEach(ev=>{const yr=parseInt(ev.date);if(yr<=2025)counts[yr]=(counts[yr]||0)+1;});
+
+  // Build data: cumulative by year with smoothing for the line (cap at 2025 — 2026 is partial year)
+  const minYear=Math.min(...Object.keys(counts).map(Number));
+  const maxYear=2025;
+  const allYears=[];
+  for(let y=minYear;y<=maxYear;y++)allYears.push({year:y,count:counts[y]||0});
+
+  // Adaptive rolling average: wide window early, narrow at the end so the curve rises
+  const smoothed=allYears.map((d,i)=>{
+    // Use smaller window near the end so recent density isn't averaged down
+    const distFromEnd=allYears.length-1-i;
+    const halfWin=distFromEnd<3?1:distFromEnd<5?2:3;
+    let sum=0,n=0;
+    for(let j=Math.max(0,i-halfWin);j<=Math.min(allYears.length-1,i+halfWin);j++){sum+=allYears[j].count;n++;}
+    return{year:d.year,count:d.count,smooth:sum/n};
+  });
+
+  const canvas=document.getElementById("accelChart");
+  const ctx=canvas.getContext("2d");
+  const dpr=window.devicePixelRatio||1;
+  const cw=canvas.parentElement.offsetWidth-48,ch=320;
+  canvas.width=cw*dpr;canvas.height=ch*dpr;
+  canvas.style.width=cw+"px";canvas.style.height=ch+"px";
+  ctx.scale(dpr,dpr);
+
+  const pad={top:24,right:20,bottom:44,left:48};
+  const w=cw-pad.left-pad.right,h=ch-pad.top-pad.bottom;
+  const maxSmooth=Math.max(...smoothed.map(d=>d.smooth));
+  const maxCount=Math.max(...allYears.map(d=>d.count));
+  const yMax=Math.max(maxSmooth,maxCount)*1.15;
+
+  function xP(yr){return pad.left+((yr-minYear)/(maxYear-minYear))*w;}
+  function yP(c){return pad.top+h-(c/yMax)*h;}
+
+  // Grid
+  ctx.strokeStyle="rgba(255,255,255,0.06)";ctx.lineWidth=1;
+  for(let i=0;i<=5;i++){const yy=pad.top+(h/5)*i;ctx.beginPath();ctx.moveTo(pad.left,yy);ctx.lineTo(cw-pad.right,yy);ctx.stroke();}
+
+  // Era shading
+  [{s:1950,e:1979,c:"rgba(110,231,183,0.03)",l:"Early AI"},{s:1980,e:2011,c:"rgba(167,139,250,0.03)",l:"Winters & Revival"},{s:2012,e:2021,c:"rgba(66,133,244,0.04)",l:"Deep Learning"},{s:2022,e:2025,c:"rgba(212,165,116,0.06)",l:"Generative AI"}].forEach(era=>{
+    const x1=Math.max(pad.left,xP(era.s)),x2=Math.min(cw-pad.right,xP(era.e));
+    ctx.fillStyle=era.c;ctx.fillRect(x1,pad.top,x2-x1,h);
+    ctx.fillStyle="rgba(255,255,255,0.2)";ctx.font="500 9px Inter";ctx.textAlign="center";
+    ctx.fillText(era.l,(x1+x2)/2,pad.top+12);
+  });
+
+  // Helper: draw smooth bezier curve through points
+  function drawSmoothCurve(pts,tension){
+    tension=tension||0.3;
+    ctx.moveTo(pts[0].x,pts[0].y);
+    for(let i=0;i<pts.length-1;i++){
+      const p0=pts[Math.max(0,i-1)],p1=pts[i],p2=pts[i+1],p3=pts[Math.min(pts.length-1,i+2)];
+      const cp1x=p1.x+(p2.x-p0.x)*tension,cp1y=p1.y+(p2.y-p0.y)*tension;
+      const cp2x=p2.x-(p3.x-p1.x)*tension,cp2y=p2.y-(p3.y-p1.y)*tension;
+      ctx.bezierCurveTo(cp1x,cp1y,cp2x,cp2y,p2.x,p2.y);
+    }
+  }
+  const curvePts=smoothed.map(d=>({x:xP(d.year),y:yP(d.smooth)}));
+
+  // Area fill under the curve
+  ctx.beginPath();
+  ctx.moveTo(curvePts[0].x,yP(0));
+  ctx.lineTo(curvePts[0].x,curvePts[0].y);
+  drawSmoothCurve(curvePts,0.3);
+  ctx.lineTo(curvePts[curvePts.length-1].x,yP(0));
+  ctx.closePath();
+  const areaGrad=ctx.createLinearGradient(0,pad.top,0,pad.top+h);
+  areaGrad.addColorStop(0,"rgba(212,165,116,0.25)");
+  areaGrad.addColorStop(0.5,"rgba(167,139,250,0.1)");
+  areaGrad.addColorStop(1,"rgba(110,231,183,0.02)");
+  ctx.fillStyle=areaGrad;ctx.fill();
+
+  // Main line (smooth bezier)
+  ctx.beginPath();
+  drawSmoothCurve(curvePts,0.3);
+  const lineGrad=ctx.createLinearGradient(pad.left,0,cw-pad.right,0);
+  lineGrad.addColorStop(0,"rgba(110,231,183,0.7)");
+  lineGrad.addColorStop(0.5,"rgba(66,133,244,0.8)");
+  lineGrad.addColorStop(0.8,"rgba(167,139,250,0.9)");
+  lineGrad.addColorStop(1,"rgba(212,165,116,1)");
+  ctx.strokeStyle=lineGrad;ctx.lineWidth=2.5;ctx.lineJoin="round";ctx.stroke();
+
+  // Data points (dots) for years with events
+  allYears.forEach(d=>{
+    if(!d.count)return;
+    const x=xP(d.year),y=yP(d.count);
+    ctx.beginPath();ctx.arc(x,y,d.count>=5?5:d.count>=2?3.5:2.5,0,Math.PI*2);
+    let color="rgba(110,231,183,0.8)";
+    if(d.year>=2022)color="rgba(212,165,116,0.9)";
+    else if(d.year>=2012)color="rgba(66,133,244,0.85)";
+    ctx.fillStyle=color;ctx.fill();
+    ctx.strokeStyle="rgba(255,255,255,0.3)";ctx.lineWidth=1;ctx.stroke();
+    // Count labels for big years
+    if(d.count>=4){ctx.fillStyle="rgba(255,255,255,0.85)";ctx.font="700 10px Inter";ctx.textAlign="center";ctx.fillText(d.count,x,y-10);}
+  });
+
+  // X labels
+  ctx.fillStyle="rgba(255,255,255,0.35)";ctx.font="500 10px Inter";ctx.textAlign="center";
+  [1950,1960,1970,1980,1990,2000,2010,2015,2020,2023,2025].forEach(yr=>{
+    if(yr>=minYear&&yr<=maxYear)ctx.fillText(yr>=2010?"'"+String(yr).slice(2):String(yr),xP(yr),ch-pad.bottom+16);
+  });
+
+  // Y label
+  ctx.save();ctx.fillStyle="rgba(255,255,255,0.25)";ctx.font="500 10px Inter";ctx.textAlign="center";
+  ctx.translate(14,pad.top+h/2);ctx.rotate(-Math.PI/2);ctx.fillText("Milestones per Year",0,0);ctx.restore();
+
+  // Stats
+  const pre2020=events.filter(e=>parseInt(e.date)<2020).length;
+  const post2020=events.filter(e=>parseInt(e.date)>=2020).length;
+  const ratio=((post2020/6)/(pre2020/69)).toFixed(1);
+  document.getElementById("stat-decades").textContent=pre2020;
+  document.getElementById("stat-recent").textContent=post2020;
+  document.getElementById("stat-ratio").textContent=ratio+"\u00d7";
+}
+
+// ─── STARFIELD ──────────────────────────────────────────────────
+function initStars(canvasId,count,maxR){
+  const c=document.getElementById(canvasId),ctx=c.getContext("2d");
+  let w,h,stars=[];
+  function resize(){w=c.width=window.innerWidth;h=c.height=window.innerHeight}
+  resize();window.addEventListener("resize",resize);
+  for(let i=0;i<count;i++)stars.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*maxR+0.2,a:Math.random()*0.5+0.1,p:Math.random()*Math.PI*2});
+  function draw(){
+    ctx.clearRect(0,0,w,h);const t=Date.now()*0.001;
+    stars.forEach(s=>{const a=s.a+Math.sin(t*0.4+s.p)*0.15;ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle=`rgba(200,200,240,${Math.max(0,a)})`;ctx.fill()});
+    requestAnimationFrame(draw);
+  }
+  draw();
+}
+initStars("stars1",100,1.2);
+initStars("stars2",60,0.8);
+</script>
+</body>
+</html>

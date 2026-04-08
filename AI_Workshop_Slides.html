@@ -935,7 +935,7 @@
       <text x="142" y="302" font-size="10" fill="#633806" text-anchor="middle">Many layers · Vision</text>
 
       <!-- LLMs -->
-      <rect x="84" y="318" width="116" height="196" rx="6" fill="#D85A30" stroke="#993C1D" stroke-width="0.5"/>
+      <rect x="90" y="318" width="104" height="196" rx="6" fill="#D85A30" stroke="#993C1D" stroke-width="0.5"/>
       <text x="142" y="340" font-size="10" font-weight="500" fill="#fff" text-anchor="middle">LLMs</text>
       <text x="142" y="356" font-size="9" fill="#FAECE7" text-anchor="middle">Transformers at scale</text>
       <text x="142" y="371" font-size="9" fill="#FAECE7" text-anchor="middle">Claude · GPT · Gemini</text>
@@ -1029,6 +1029,10 @@
       </div>
     </div>
   </div>
+
+  <div style="margin-top:1.5rem;">
+    <a href="https://reginaflores.github.io/AI_Workshop_Buckley/ai-timeline.html" target="_blank" style="display:inline-flex; align-items:center; gap:0.5rem; font-family:var(--mono); font-size:0.65rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent); border:1px solid var(--accent); padding:0.5rem 1rem; text-decoration:none; transition:background 0.2s, color 0.2s;" onmouseover="this.style.background='var(--accent)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='var(--accent)'">↗ Detailed AI Timeline</a>
+  </div>
 </section>
 
 <!-- ML FOUNDATION -->
@@ -1095,7 +1099,7 @@
   <p class="lead">The same optimization principle underlies completely different model families — each with a different architecture, training signal, and class of problems it solves well.</p>
   <p style="margin-top:1rem;">Most AI tools you use today combine more than one. ChatGPT and Claude are LLMs fine-tuned with RL. DALL·E is a diffusion model guided by a text encoder. Sora combines both.</p>
 
-  <div class="cards" style="margin-top:3rem;">
+  <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:1.5rem; margin-top:3rem;">
     <div class="card">
       <span class="card-icon">💬</span>
       <h3>Large Language Models</h3>
@@ -2303,7 +2307,7 @@
     <div class="eyebrow">Workshop</div>
     <h2 style="color:var(--paper);">Let's build something <em style="color:var(--accent);">real.</em></h2>
     <div class="rule"></div>
-    <p class="lead" style="color:rgba(247,244,239,0.8);">In the next 30 minutes, we're going to build a real, working app — together, using Claude Code. No coding experience needed. You just need to know how to talk.</p>
+    <p class="lead" style="color:rgba(247,244,239,0.8);">In the next 30 minutes, we're going to use Claude — Chat, Cowork, and Code — to build a real, working app together. No coding experience needed. You just need to know how to talk.</p>
 
     <div class="stats-row" style="margin-top:2.5rem;">
       <div class="stat">
@@ -2317,6 +2321,24 @@
       <div class="stat">
         <span class="s-num" style="color:var(--paper);">1</span>
         <span class="s-label">real app you'll walk away with</span>
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(247,244,239,0.08); margin-top:3rem;">
+      <div style="background:rgba(15,14,12,0.4); padding:1.5rem;">
+        <div style="font-family:var(--mono); font-size:0.6rem; letter-spacing:0.08em; color:var(--accent); margin-bottom:0.5rem; text-transform:uppercase;">Step 1</div>
+        <div style="font-weight:500; color:var(--paper); font-size:0.95rem; margin-bottom:0.4rem;">Claude Chat</div>
+        <p style="font-size:0.82rem; color:rgba(247,244,239,0.6); max-width:none; line-height:1.55;">Tell Claude what you want to build. Describe the app in plain English. Ask it questions. Refine the idea together.</p>
+      </div>
+      <div style="background:rgba(15,14,12,0.4); padding:1.5rem;">
+        <div style="font-family:var(--mono); font-size:0.6rem; letter-spacing:0.08em; color:var(--accent); margin-bottom:0.5rem; text-transform:uppercase;">Step 2</div>
+        <div style="font-weight:500; color:var(--paper); font-size:0.95rem; margin-bottom:0.4rem;">Claude Code</div>
+        <p style="font-size:0.82rem; color:rgba(247,244,239,0.6); max-width:none; line-height:1.55;">Hand it the calendar PDF. Claude reads it, structures the data, and builds the web app. You review and iterate.</p>
+      </div>
+      <div style="background:rgba(15,14,12,0.4); padding:1.5rem;">
+        <div style="font-family:var(--mono); font-size:0.6rem; letter-spacing:0.08em; color:var(--accent); margin-bottom:0.5rem; text-transform:uppercase;">Step 3</div>
+        <div style="font-weight:500; color:var(--paper); font-size:0.95rem; margin-bottom:0.4rem;">Claude Cowork</div>
+        <p style="font-size:0.82rem; color:rgba(247,244,239,0.6); max-width:none; line-height:1.55;">Set it up to run on a schedule — a weekly Sunday digest of what's coming up, delivered to your phone.</p>
       </div>
     </div>
   </div>
@@ -2363,7 +2385,7 @@
 <section class="dark">
   <div style="max-width:1100px; margin:0 auto; width:100%;">
     <div class="eyebrow">Workshop Steps</div>
-    <h2 style="color:var(--paper);">What you'll say to<br><em style="color:var(--accent);">Claude Code</em></h2>
+    <h2 style="color:var(--paper);">What you'll say to<br><em style="color:var(--accent);">Claude Chat</em></h2>
     <div class="rule"></div>
 
     <div class="workshop-steps">
@@ -2403,27 +2425,66 @@
   </div>
 </section>
 
-<!-- CLOSING -->
-<div class="closing-grid">
-  <div class="closing-left">
-    <div class="eyebrow">You already have everything it takes.</div>
-    <h2 style="color:var(--paper); font-size:clamp(2rem,4vw,3.5rem);">Curiosity, taste, and knowing what you need —<br><em style="color:var(--accent);">that's the real skill.</em></h2>
-    <div class="rule" style="margin-top:2rem;"></div>
-    <p style="margin-top:1.5rem;">AI just gives you a way to act on it, faster and bigger than ever before. The version of you that knows how to use these tools is dramatically more capable than the version that doesn't.</p>
-    <p style="margin-top:1.5rem; font-family:var(--mono); font-size:0.7rem; color:rgba(247,244,239,0.4);">reginaflores.ai · Workshop 01 · 2026</p>
-  </div>
-  <div class="closing-right">
-    <div class="eyebrow">What's Next</div>
-    <h2>Workshop <em>02</em></h2>
-    <div class="rule" style="background:rgba(247,244,239,0.4);"></div>
-    <p style="margin-top:1rem;">Building deeper. We'll go from a web app to a full agent pipeline — one that reads your inbox, manages your schedule, and surfaces what matters, automatically.</p>
-    <div class="cards" style="margin-top:2rem; grid-template-columns:1fr;">
-      <div class="card" style="background:rgba(247,244,239,0.12); border-color:rgba(247,244,239,0.2);">
-        <h3 style="color:var(--paper); font-size:0.95rem;">Claude Code → Claude Cowork</h3>
-        <p style="color:rgba(247,244,239,0.7); font-size:0.85rem; max-width:none;">From building apps to building pipelines that run themselves.</p>
+<!-- COWORK AND CODE STEPS -->
+<section class="dark">
+  <div style="max-width:1100px; margin:0 auto; width:100%;">
+    <div class="eyebrow">Workshop Steps — Continued</div>
+    <h2 style="color:var(--paper);">What you'll say to<br><em style="color:var(--accent);">Claude Cowork &amp; Code</em></h2>
+    <div class="rule"></div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:3rem; margin-top:2.5rem;">
+
+      <!-- COWORK COLUMN -->
+      <div>
+        <div style="font-family:var(--mono); font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); margin-bottom:1.5rem; display:flex; align-items:center; gap:0.5rem;">
+          <span style="display:block; width:6px; height:6px; border-radius:50%; background:var(--accent);"></span>
+          Claude Cowork
+        </div>
+        <div style="display:flex; flex-direction:column; gap:1.5rem;">
+          <div>
+            <span style="font-family:var(--mono); font-size:0.65rem; color:var(--accent);">01 — 3 min</span>
+            <h4 style="color:var(--paper); font-size:0.9rem; font-family:var(--sans); font-weight:500; margin:0.4rem 0;">Create a folder</h4>
+            <div style="background:rgba(247,244,239,0.06); border-left:2px solid var(--accent); padding:0.75rem; font-family:var(--mono); font-size:0.7rem; line-height:1.55; color:rgba(247,244,239,0.7);">"Create a new folder called Buckley Calendar on my desktop and set it as your Cowork workspace."</div>
+          </div>
+          <div>
+            <span style="font-family:var(--mono); font-size:0.65rem; color:var(--accent);">02 — 3 min</span>
+            <h4 style="color:var(--paper); font-size:0.9rem; font-family:var(--sans); font-weight:500; margin:0.4rem 0;">Add the file from Chat</h4>
+            <div style="background:rgba(247,244,239,0.06); border-left:2px solid var(--accent); padding:0.75rem; font-family:var(--mono); font-size:0.7rem; line-height:1.55; color:rgba(247,244,239,0.7);">"Save the structured calendar data we built in Claude Chat into this folder as calendar-data.json."</div>
+          </div>
+        </div>
       </div>
+
+      <!-- CODE COLUMN -->
+      <div>
+        <div style="font-family:var(--mono); font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(247,244,239,0.5); margin-bottom:1.5rem; display:flex; align-items:center; gap:0.5rem;">
+          <span style="display:block; width:6px; height:6px; border-radius:50%; background:rgba(247,244,239,0.5);"></span>
+          Claude Code
+        </div>
+        <div style="display:flex; flex-direction:column; gap:1.5rem;">
+          <div>
+            <span style="font-family:var(--mono); font-size:0.65rem; color:rgba(247,244,239,0.4);">01 — 5 min</span>
+            <h4 style="color:var(--paper); font-size:0.9rem; font-family:var(--sans); font-weight:500; margin:0.4rem 0;">Push to GitHub</h4>
+            <div style="background:rgba(247,244,239,0.04); border-left:2px solid rgba(247,244,239,0.2); padding:0.75rem; font-family:var(--mono); font-size:0.7rem; line-height:1.55; color:rgba(247,244,239,0.6);">"Create a GitHub repository called buckley-calendar, commit all the files, and push. Then enable GitHub Pages so the app is live at a public URL I can share."</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-top:2.5rem; background:rgba(247,244,239,0.05); border:1px solid rgba(247,244,239,0.1); padding:1.25rem 1.5rem; display:flex; align-items:center; gap:1rem;">
+      <span style="font-size:1.25rem;">✦</span>
+      <p style="font-size:0.85rem; color:rgba(247,244,239,0.6); max-width:none; line-height:1.6;">By the end: a live web app at a real URL, a recurring weekly digest, and your first GitHub repo — all from plain English conversations.</p>
     </div>
   </div>
+</section>
+
+<!-- CLOSING -->
+<div style="background:var(--ink); min-height:100vh; padding:8rem 4rem; display:flex; flex-direction:column; justify-content:center;">
+  <div class="eyebrow">You already have everything it takes.</div>
+  <h2 style="color:var(--paper); font-size:clamp(2rem,4vw,3.5rem); max-width:800px;">Curiosity, taste, and knowing what you need —<br><em style="color:var(--accent);">that's the real skill.</em></h2>
+  <div class="rule" style="margin-top:2rem;"></div>
+  <p style="margin-top:1.5rem; color:rgba(247,244,239,0.8);">AI just gives you a way to act on it, faster and bigger than ever before. The version of you that knows how to use these tools is dramatically more capable than the version that doesn't.</p>
+  <p style="margin-top:1.5rem; font-family:var(--mono); font-size:0.7rem; color:rgba(247,244,239,0.4);">reginaflores.ai · Workshop 01 · 2026</p>
 </div>
 
 <script>

@@ -858,10 +858,12 @@
   <a href="#llms">LLMs</a>
   <a href="#local-llm">Local AI</a>
   <a href="#vertical-llms">Vertical AI</a>
-  <a href="#vibe">Vibe Coding</a>
   <a href="#ecosystem">Products</a>
   <a href="#models">Models</a>
   <a href="#mythos">Mythos</a>
+  <a href="#hle">Last Exam</a>
+  <a href="#vibe">Vibe Coding</a>
+  <a href="#agents">Agents</a>
   <a href="#build">Build</a>
 </nav>
 
@@ -887,7 +889,7 @@
       ✓ A real app you built<br>
     </div>
     <div class="mono-block" style="margin-top:0.5rem;">
-      Format: ~1 hour<br>
+      Format: ~2 hours<br>
       Level: No code required<br>
       Instructor: Regina Flores Mir<br>
       ── reginaflores.ai ──
@@ -1097,7 +1099,7 @@
   <h2>ML is the umbrella.<br><em>The models beneath it vary wildly.</em></h2>
   <div class="rule"></div>
   <p class="lead">The same optimization principle underlies completely different model families — each with a different architecture, training signal, and class of problems it solves well.</p>
-  <p style="margin-top:1rem;">Most AI tools you use today combine more than one. ChatGPT and Claude are LLMs fine-tuned with RL. DALL·E is a diffusion model guided by a text encoder. Sora combines both.</p>
+  <p style="margin-top:1rem;">Most AI tools you use today combine more than one. ChatGPT and Claude are LLMs fine-tuned with RL. DALL·E is a diffusion model guided by a text encoder. Sora combines both. (Sora shutting down Apr 26)</p>
 
   <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:1.5rem; margin-top:3rem;">
     <div class="card">
@@ -1117,7 +1119,7 @@
       <div class="tags">
         <span class="tag">Midjourney</span>
         <span class="tag">Stable Diffusion</span>
-        <span class="tag">Sora</span>
+        <span class="tag">Sora (shutting down Apr 26)</span>
       </div>
     </div>
     <div class="card">
@@ -1181,7 +1183,7 @@
     <div class="platform-cell">
       <span class="p-icon">🎬</span>
       <span class="p-cat">Video</span>
-      <span class="p-name">Sora · Runway</span>
+      <span class="p-name">Sora (shutting down Apr 26) · Runway</span>
       <span class="p-tools">Pika · Kling</span>
     </div>
     <div class="platform-cell">
@@ -1273,7 +1275,7 @@
         <span class="tag">💬 Claude · ChatGPT</span>
         <span class="tag">🎨 Midjourney</span>
         <span class="tag">🎵 Suno</span>
-        <span class="tag">🎬 Sora</span>
+        <span class="tag">🎬 Sora (shutting down Apr 26)</span>
       </div>
     </div>
     <div class="card" style="border-color: rgba(30,86,200,0.3); background: rgba(30,86,200,0.03);">
@@ -1295,194 +1297,7 @@
   </div>
 </section>
 
-<!-- AGENTS SECTION -->
-<section id="agents" class="dark">
-  <div style="max-width:1100px; margin:0 auto; width:100%;">
-    <div class="eyebrow">New</div>
-    <h2 style="color:var(--paper);">AI <em style="color:var(--accent);">Agents</em> &amp; Bots</h2>
-    <div class="rule"></div>
-    <p class="lead" style="color:rgba(247,244,239,0.8); max-width:680px;">A chatbot answers your question. An agent <strong style="color:var(--paper);">goes and handles it.</strong> This is the most important shift happening in AI right now — and it's already available to you.</p>
 
-    <!-- HOW AN AGENT WORKS -->
-    <div style="margin-top:3rem;">
-      <p class="muted" style="color:rgba(247,244,239,0.4); margin-bottom:1.25rem;">HOW AN AGENT WORKS</p>
-      <div class="agent-flow">
-        <div class="agent-node">
-          <span class="n-icon">🧑‍💻</span>
-          <span class="n-label">You give it</span>
-          <span class="n-title">A Goal</span>
-        </div>
-        <div class="agent-arrow">→</div>
-        <div class="agent-node">
-          <span class="n-icon">🧠</span>
-          <span class="n-label">It plans</span>
-          <span class="n-title">A Strategy</span>
-        </div>
-        <div class="agent-arrow">→</div>
-        <div class="agent-node">
-          <span class="n-icon">🔧</span>
-          <span class="n-label">It uses</span>
-          <span class="n-title">Tools & APIs</span>
-        </div>
-        <div class="agent-arrow">→</div>
-        <div class="agent-node">
-          <span class="n-icon">✅</span>
-          <span class="n-label">It delivers</span>
-          <span class="n-title">The Result</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- CHATBOT VS AGENT -->
-    <div style="margin-top:3rem;">
-      <p class="muted" style="color:rgba(247,244,239,0.4); margin-bottom:1.25rem;">CHATBOT VS. AGENT — THE KEY DIFFERENCE</p>
-      <table class="compare-table" style="color:var(--paper);">
-        <thead>
-          <tr>
-            <th style="color:rgba(247,244,239,0.5);">Dimension</th>
-            <th style="color:rgba(247,244,239,0.5);">Chatbot</th>
-            <th style="color:var(--accent);">Agent</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="label" style="color:rgba(247,244,239,0.6);">What it does</td>
-            <td style="color:rgba(247,244,239,0.7);">Answers your question</td>
-            <td style="color:var(--paper);">Completes your task</td>
-          </tr>
-          <tr>
-            <td class="label" style="color:rgba(247,244,239,0.6);">Memory</td>
-            <td style="color:rgba(247,244,239,0.7);">This conversation only</td>
-            <td style="color:var(--paper);">Can remember across sessions</td>
-          </tr>
-          <tr>
-            <td class="label" style="color:rgba(247,244,239,0.6);">Tools</td>
-            <td style="color:rgba(247,244,239,0.7);">Text in, text out</td>
-            <td style="color:var(--paper);">Browses web, reads files, sends email</td>
-          </tr>
-          <tr>
-            <td class="label" style="color:rgba(247,244,239,0.6);">Runs for</td>
-            <td style="color:rgba(247,244,239,0.7);">Seconds</td>
-            <td style="color:var(--paper);">Minutes to hours, unattended</td>
-          </tr>
-          <tr>
-            <td class="label" style="color:rgba(247,244,239,0.6);">You do</td>
-            <td style="color:rgba(247,244,239,0.7);">All the follow-up yourself</td>
-            <td style="color:var(--paper);">Review the finished output</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- REAL EXAMPLES -->
-    <div style="margin-top:3rem;">
-      <p class="muted" style="color:rgba(247,244,239,0.4); margin-bottom:0;">REAL EXAMPLES — FOR YOUR LIFE RIGHT NOW</p>
-      <div class="agent-examples">
-        <div class="agent-ex">
-          <span class="ex-icon">📅</span>
-          <h4>School Scheduler</h4>
-          <p>Tell it: "Parse the Buckley calendar PDF, pull all Grade 2 events, and send me a weekly digest every Sunday night."</p>
-          <span class="try-now">Try with Claude Code</span>
-        </div>
-        <div class="agent-ex">
-          <span class="ex-icon">📧</span>
-          <h4>Email Triage Bot</h4>
-          <p>Reads your inbox, flags what needs a reply today, drafts responses for your review. You approve, it sends.</p>
-          <span class="try-now">Try with Claude + Gmail</span>
-        </div>
-        <div class="agent-ex">
-          <span class="ex-icon">🔍</span>
-          <h4>Research Agent</h4>
-          <p>Tell it: "Research summer programs for a 7-year-old in NYC, under $3k, with spots still open." It searches, compares, and returns a ranked list.</p>
-          <span class="try-now">Try with Perplexity</span>
-        </div>
-        <div class="agent-ex">
-          <span class="ex-icon">🛒</span>
-          <h4>Shopping Agent</h4>
-          <p>"Find the best-reviewed lunchbox under $40 that fits in a Buckley cubby and has no BPA." Done. With links.</p>
-          <span class="try-now">Try with ChatGPT Operator</span>
-        </div>
-      </div>
-    </div>
-
-    <div style="margin-top:2.5rem; background:rgba(30,86,200,0.12); border:1px solid rgba(30,86,200,0.3); padding:1.5rem; max-width:700px;">
-      <p class="muted" style="color:var(--accent); margin-bottom:0.5rem; display:block;">THE MINDSET SHIFT</p>
-      <p style="font-family:var(--serif); font-size:1.25rem; font-style:italic; color:var(--paper); max-width:none; line-height:1.5;">Stop asking AI for answers. Start assigning AI tasks — with a deadline and a deliverable.</p>
-    </div>
-  </div>
-</section>
-
-<!-- VIBE CODING -->
-<section id="vibe">
-  <div class="eyebrow">A New Way to Build</div>
-  <h2>Vibe <em>Coding</em></h2>
-  <div class="rule"></div>
-  <p class="lead">Coined by Andrej Karpathy — one of the founders of OpenAI — in early 2025. Instead of writing code yourself, you <strong>describe what you want</strong> in plain English, and the AI builds it. The skill isn't coding anymore — it's knowing what to ask for and recognizing when it's right.</p>
-
-  <div class="before-after">
-    <div class="ba-col before">
-      <span class="ba-label">The old way</span>
-      <p>Learn Python. Study HTML. Understand databases. Take courses for months. Write hundreds of lines of code. Debug errors. Start over. Repeat indefinitely.</p>
-    </div>
-    <div class="ba-col after">
-      <span class="ba-label">Vibe coding</span>
-      <p>Open Claude Code. Describe what you want. Watch it appear in seconds. Give feedback. Iterate. Walk away with something real.</p>
-    </div>
-  </div>
-
-  <div class="pullquote">
-    <p>"The best interface for AI is the one you've been using your whole life — plain English."</p>
-  </div>
-
-  <div class="steps" style="margin-top:1rem;">
-    <div class="step">
-      <span class="step-num">The old skill</span>
-      <h3>Prompt engineering</h3>
-      <p>For a moment, people sold courses on how to word your inputs. Frameworks, formulas, incantations.</p>
-    </div>
-    <div class="step">
-      <span class="step-num">The new skill</span>
-      <h3>Clear intention</h3>
-      <p>Be specific. Give context. Say what you actually want. Push back when it's wrong. That's it. You already know how to do this.</p>
-    </div>
-  </div>
-</section>
-
-<!-- CLAUDE CODE -->
-<section class="cream-bg">
-  <div class="eyebrow">Claude Code</div>
-  <h2>You don't need a terminal.<br><em>You don't need VS Code.</em></h2>
-  <div class="rule"></div>
-  <p class="lead">Claude Code used to be a terminal-only developer tool. Anthropic now offers a <strong>Desktop App</strong> that gives you the same full power through a regular window — download and open it like any other app.</p>
-
-  <div class="steps">
-    <div class="step">
-      <span class="step-num">Step 1</span>
-      <h3>Go to claude.ai</h3>
-      <p>Create a free account with your email address. No credit card required to start.</p>
-    </div>
-    <div class="step">
-      <span class="step-num">Step 2</span>
-      <h3>Upgrade to Claude Pro</h3>
-      <p>$20/month. This unlocks Claude Code. The free plan doesn't include it.</p>
-    </div>
-    <div class="step">
-      <span class="step-num">Step 3</span>
-      <h3>Download the Desktop App</h3>
-      <p>Available for Mac and Windows. Installs like any normal app — no terminal involved.</p>
-    </div>
-    <div class="step">
-      <span class="step-num">Step 4</span>
-      <h3>Open and start talking</h3>
-      <p>Describe what you want to build in plain English. No coding experience required. Just a conversation.</p>
-    </div>
-  </div>
-
-  <div class="insight" style="margin-top:2.5rem;">
-    <span class="i-label">Web Apps vs. Native iOS Apps</span>
-    <p>Web apps run in any browser — phone, laptop, tablet — and can be added to your home screen as a Progressive Web App (no App Store, no fees). Native iOS apps require Xcode, a Mac, and a $99/year Apple Developer Account. For this workshop, we're building web apps — faster, free, and just as useful.</p>
-  </div>
-</section>
 
 <!-- LLM LANDSCAPE -->
 <section id="llms">
@@ -2267,39 +2082,332 @@
   </div>
 </section>
 
-<!-- ITERATIVE DESIGN -->
-<section class="cream-bg">
-  <div class="eyebrow">A Note on the Design Process</div>
-  <h2>Good things get built in<br><em>loops, not lines.</em></h2>
+<!-- ITERATIVE DESIGN --><!-- HLE -->
+<section id="hle">
+  <div class="eyebrow">The Benchmark</div>
+  <h2>Humanity's<br><em>Last Exam</em></h2>
   <div class="rule"></div>
+  <p class="lead">A test so hard that when AI finally aces it, we may no longer be able to write one harder. 2,500 questions from nearly 1,000 subject-matter experts at 500+ institutions. In early 2025, the best models scored under 10%. By March 2026, GPT-5.4 Pro leads at 44.3% — human experts still average 90%.</p>
 
-  <div class="steps">
-    <div class="step">
-      <span class="step-num">✏️ Design</span>
-      <h3>Describe</h3>
-      <p>Describe what you want in plain English. Be specific about what matters to you.</p>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:3rem; margin-top:3rem; align-items:start;">
+
+    <div>
+      <p class="muted" style="margin-bottom:1.5rem;">WHAT IT IS</p>
+      <div style="display:flex; flex-direction:column; gap:1rem;">
+        <div style="border-left:3px solid var(--accent); padding:0.75rem 1.25rem; background:var(--cream);">
+          <p style="font-size:0.875rem; line-height:1.65; max-width:none;"><strong>The problem:</strong> AI was acing every test we threw at it. MMLU, the gold standard benchmark, is now solved at 90%+ accuracy. We ran out of hard tests.</p>
+        </div>
+        <div style="border-left:3px solid rgba(15,14,12,0.15); padding:0.75rem 1.25rem; background:var(--cream);">
+          <p style="font-size:0.875rem; line-height:1.65; max-width:none;"><strong>The solution:</strong> Ask the world's sharpest minds to submit their hardest questions. PhD-level. Verifiable answers. No multiple choice tricks. Published in Nature, January 2026.</p>
+        </div>
+        <div style="border-left:3px solid rgba(15,14,12,0.15); padding:0.75rem 1.25rem; background:var(--cream);">
+          <p style="font-size:0.875rem; line-height:1.65; max-width:none;"><strong>The result:</strong> Even the best models struggle. Gemini 3 Pro leads at 38.3%. Everything else is under 26%. These are questions that genuinely stump frontier AI.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:1.5rem; background:var(--ink); color:var(--paper); padding:1.25rem 1.5rem;">
+        <p class="muted" style="color:rgba(247,244,239,0.4); margin-bottom:0.5rem; display:block;">WHY IT MATTERS</p>
+        <p style="font-size:0.85rem; line-height:1.65; color:rgba(247,244,239,0.75); max-width:none;">When a model hits 50%+ on HLE, it means AI has reached expert-level reasoning across essentially every field of human knowledge. We're not there yet — but the pace of improvement suggests we will be soon.</p>
+      </div>
+
+      <div style="margin-top:1rem;">
+        <a href="https://agi.safe.ai/" target="_blank" style="display:inline-flex; align-items:center; gap:0.5rem; font-family:var(--mono); font-size:0.65rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent); border:1px solid var(--accent); padding:0.5rem 1rem; text-decoration:none; transition:all 0.2s;" onmouseover="this.style.background='var(--accent)';this.style.color='var(--paper)'" onmouseout="this.style.background='transparent';this.style.color='var(--accent)'">↗ agi.safe.ai</a>
+      </div>
     </div>
-    <div class="step">
-      <span class="step-num">⚡ Prototype</span>
-      <h3>Build</h3>
-      <p>AI builds a working version in seconds. Something real to react to.</p>
+
+    <!-- CHART -->
+    <div>
+      <p class="muted" style="margin-bottom:1.25rem;">MODEL ACCURACY ON HLE — Scale AI Official Leaderboard · March 2026</p>
+      <div style="display:flex; flex-direction:column; gap:0.6rem;">
+
+        <div style="display:flex; align-items:center; gap:0.75rem;">
+          <div style="font-family:var(--mono); font-size:0.62rem; color:var(--muted); width:190px; text-align:right; white-space:nowrap;">GPT-5.4 Pro</div>
+          <div style="flex:1; background:rgba(15,14,12,0.06); height:26px; border-radius:2px; position:relative; overflow:hidden;">
+            <div style="position:absolute; left:0; top:0; height:100%; width:44.3%; background:rgba(26,58,107,0.75); border-radius:2px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px;">
+              <span style="font-family:var(--mono); font-size:0.6rem; color:#fff; font-weight:500;">44.3%</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex; align-items:center; gap:0.75rem;">
+          <div style="font-family:var(--mono); font-size:0.62rem; color:var(--muted); width:190px; text-align:right; white-space:nowrap;">Gemini 3 Pro Preview</div>
+          <div style="flex:1; background:rgba(15,14,12,0.06); height:26px; border-radius:2px; position:relative; overflow:hidden;">
+            <div style="position:absolute; left:0; top:0; height:100%; width:37.5%; background:rgba(26,58,107,0.65); border-radius:2px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px;">
+              <span style="font-family:var(--mono); font-size:0.6rem; color:#fff; font-weight:500;">37.5%</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex; align-items:center; gap:0.75rem;">
+          <div style="font-family:var(--mono); font-size:0.62rem; color:var(--muted); width:190px; text-align:right; white-space:nowrap;">GPT-5.4 (thinking)</div>
+          <div style="flex:1; background:rgba(15,14,12,0.06); height:26px; border-radius:2px; position:relative; overflow:hidden;">
+            <div style="position:absolute; left:0; top:0; height:100%; width:36.2%; background:rgba(26,58,107,0.58); border-radius:2px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px;">
+              <span style="font-family:var(--mono); font-size:0.6rem; color:#fff; font-weight:500;">36.2%</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex; align-items:center; gap:0.75rem;">
+          <div style="font-family:var(--mono); font-size:0.62rem; color:var(--muted); width:190px; text-align:right; white-space:nowrap;">Claude Opus 4.6 (thinking)</div>
+          <div style="flex:1; background:rgba(15,14,12,0.06); height:26px; border-radius:2px; position:relative; overflow:hidden;">
+            <div style="position:absolute; left:0; top:0; height:100%; width:34.4%; background:var(--accent); border-radius:2px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px;">
+              <span style="font-family:var(--mono); font-size:0.6rem; color:#fff; font-weight:500;">34.4%</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex; align-items:center; gap:0.75rem;">
+          <div style="font-family:var(--mono); font-size:0.62rem; color:var(--muted); width:190px; text-align:right; white-space:nowrap;">GPT-5 Pro</div>
+          <div style="flex:1; background:rgba(15,14,12,0.06); height:26px; border-radius:2px; position:relative; overflow:hidden;">
+            <div style="position:absolute; left:0; top:0; height:100%; width:31.6%; background:rgba(26,58,107,0.48); border-radius:2px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px;">
+              <span style="font-family:var(--mono); font-size:0.6rem; color:#fff; font-weight:500;">31.6%</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex; align-items:center; gap:0.75rem;">
+          <div style="font-family:var(--mono); font-size:0.62rem; color:var(--muted); width:190px; text-align:right; white-space:nowrap;">GPT-5.2</div>
+          <div style="flex:1; background:rgba(15,14,12,0.06); height:26px; border-radius:2px; position:relative; overflow:hidden;">
+            <div style="position:absolute; left:0; top:0; height:100%; width:27.8%; background:rgba(26,58,107,0.4); border-radius:2px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px;">
+              <span style="font-family:var(--mono); font-size:0.6rem; color:var(--ink); font-weight:500;">27.8%</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex; align-items:center; gap:0.75rem;">
+          <div style="font-family:var(--mono); font-size:0.62rem; color:var(--muted); width:190px; text-align:right; white-space:nowrap;">GPT-5</div>
+          <div style="flex:1; background:rgba(15,14,12,0.06); height:26px; border-radius:2px; position:relative; overflow:hidden;">
+            <div style="position:absolute; left:0; top:0; height:100%; width:25.3%; background:rgba(26,58,107,0.34); border-radius:2px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px;">
+              <span style="font-family:var(--mono); font-size:0.6rem; color:var(--ink); font-weight:500;">25.3%</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex; align-items:center; gap:0.75rem;">
+          <div style="font-family:var(--mono); font-size:0.62rem; color:var(--muted); width:190px; text-align:right; white-space:nowrap;">Claude Opus 4.5 (thinking)</div>
+          <div style="flex:1; background:rgba(15,14,12,0.06); height:26px; border-radius:2px; position:relative; overflow:hidden;">
+            <div style="position:absolute; left:0; top:0; height:100%; width:25.2%; background:var(--accent); opacity:0.5; border-radius:2px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px;">
+              <span style="font-family:var(--mono); font-size:0.6rem; color:var(--ink); font-weight:500;">25.2%</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex; align-items:center; gap:0.75rem;">
+          <div style="font-family:var(--mono); font-size:0.62rem; color:var(--muted); width:190px; text-align:right; white-space:nowrap;">Claude Opus 4.6 (no thinking)</div>
+          <div style="flex:1; background:rgba(15,14,12,0.06); height:26px; border-radius:2px; position:relative; overflow:hidden;">
+            <div style="position:absolute; left:0; top:0; height:100%; width:19.0%; background:var(--accent); opacity:0.35; border-radius:2px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px;">
+              <span style="font-family:var(--mono); font-size:0.6rem; color:var(--ink); font-weight:500;">19.0%</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:0.5rem; display:flex; align-items:center; gap:0.75rem;">
+          <div style="width:190px;"></div>
+          <div style="flex:1; position:relative; height:16px;">
+            <div style="position:absolute; left:0; font-family:var(--mono); font-size:0.55rem; color:var(--muted);">0%</div>
+            <div style="position:absolute; left:25%; font-family:var(--mono); font-size:0.55rem; color:var(--muted);">25%</div>
+            <div style="position:absolute; left:50%; font-family:var(--mono); font-size:0.55rem; color:var(--muted);">50%</div>
+            <div style="position:absolute; left:75%; font-family:var(--mono); font-size:0.55rem; color:var(--muted);">75%</div>
+            <div style="position:absolute; right:0; font-family:var(--mono); font-size:0.55rem; color:var(--muted);">100%</div>
+          </div>
+        </div>
+
+      </div>
+      <p class="muted" style="margin-top:1rem; font-size:0.6rem;">Source: labs.scale.com/leaderboard/humanitys_last_exam · March 2026 · Human expert avg: ~90%</p>
     </div>
-    <div class="step">
-      <span class="step-num">👀 Test</span>
-      <h3>Use it</h3>
-      <p>Use it. Break it. Notice what's missing or wrong or not quite right.</p>
+  </div>
+</section>
+
+<!-- VIBE CODING -->
+<section id="vibe">
+  <div class="eyebrow">A New Way to Build</div>
+  <h2>Vibe <em>Coding</em></h2>
+  <div class="rule"></div>
+  <p class="lead">Coined by Andrej Karpathy — one of the founders of OpenAI — in early 2025. Instead of writing code yourself, you <strong>describe what you want</strong> in plain English, and the AI builds it. The skill isn't coding anymore — it's knowing what to ask for and recognizing when it's right.</p>
+
+  <div class="before-after">
+    <div class="ba-col before">
+      <span class="ba-label">The old way</span>
+      <p>Learn Python. Study HTML. Understand databases. Take courses for months. Write hundreds of lines of code. Debug errors. Start over. Repeat indefinitely.</p>
     </div>
-    <div class="step">
-      <span class="step-num">🔁 Iterate</span>
-      <h3>Refine</h3>
-      <p>Tell AI what to fix. Repeat until it's right. The back-and-forth IS the skill.</p>
+    <div class="ba-col after">
+      <span class="ba-label">Vibe coding</span>
+      <p>Open Claude Code. Describe what you want. Watch it appear in seconds. Give feedback. Iterate. Walk away with something real.</p>
     </div>
   </div>
 
   <div class="pullquote">
-    <p>"The app you're about to build won't come from one prompt. It will be shaped through conversation. Each round of feedback makes it sharper."</p>
+    <p>"The best interface for AI is the one you've been using your whole life — plain English."</p>
+  </div>
+
+  <div class="steps" style="margin-top:1rem;">
+    <div class="step">
+      <span class="step-num">The old skill</span>
+      <h3>Prompt engineering</h3>
+      <p>For a moment, people sold courses on how to word your inputs. Frameworks, formulas, incantations.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">The new skill</span>
+      <h3>Clear intention</h3>
+      <p>Be specific. Give context. Say what you actually want. Push back when it's wrong. That's it. You already know how to do this.</p>
+    </div>
   </div>
 </section>
+
+<!-- CLAUDE CODE -->
+<section class="cream-bg">
+  <div class="eyebrow">Claude Code</div>
+  <h2>You don't need a terminal.<br><em>You don't need VS Code.</em></h2>
+  <div class="rule"></div>
+  <p class="lead">Claude Code used to be a terminal-only developer tool. Anthropic now offers a <strong>Desktop App</strong> that gives you the same full power through a regular window — download and open it like any other app.</p>
+
+  <div class="steps">
+    <div class="step">
+      <span class="step-num">Step 1</span>
+      <h3>Go to claude.ai</h3>
+      <p>Create a free account with your email address. No credit card required to start.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">Step 2</span>
+      <h3>Upgrade to Claude Pro</h3>
+      <p>$20/month. This unlocks Claude Code. The free plan doesn't include it.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">Step 3</span>
+      <h3>Download the Desktop App</h3>
+      <p>Available for Mac and Windows. Installs like any normal app — no terminal involved.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">Step 4</span>
+      <h3>Open and start talking</h3>
+      <p>Describe what you want to build in plain English. No coding experience required. Just a conversation.</p>
+    </div>
+  </div>
+
+  <div class="insight" style="margin-top:2.5rem;">
+    <span class="i-label">Web Apps vs. Native iOS Apps</span>
+    <p>Web apps run in any browser — phone, laptop, tablet — and can be added to your home screen as a Progressive Web App (no App Store, no fees). Native iOS apps require Xcode, a Mac, and a $99/year Apple Developer Account. For this workshop, we're building web apps — faster, free, and just as useful.</p>
+  </div>
+</section>
+
+
+<!-- AGENTS SECTION -->
+<section id="agents" class="dark">
+  <div style="max-width:1100px; margin:0 auto; width:100%;">
+    <div class="eyebrow">New</div>
+    <h2 style="color:var(--paper);">AI <em style="color:var(--accent);">Agents</em> &amp; Bots</h2>
+    <div class="rule"></div>
+    <p class="lead" style="color:rgba(247,244,239,0.8); max-width:680px;">A chatbot answers your question. An agent <strong style="color:var(--paper);">goes and handles it.</strong> This is the most important shift happening in AI right now — and it's already available to you.</p>
+
+    <!-- HOW AN AGENT WORKS -->
+    <div style="margin-top:3rem;">
+      <p class="muted" style="color:rgba(247,244,239,0.4); margin-bottom:1.25rem;">HOW AN AGENT WORKS</p>
+      <div class="agent-flow">
+        <div class="agent-node">
+          <span class="n-icon">🧑‍💻</span>
+          <span class="n-label">You give it</span>
+          <span class="n-title">A Goal</span>
+        </div>
+        <div class="agent-arrow">→</div>
+        <div class="agent-node">
+          <span class="n-icon">🧠</span>
+          <span class="n-label">It plans</span>
+          <span class="n-title">A Strategy</span>
+        </div>
+        <div class="agent-arrow">→</div>
+        <div class="agent-node">
+          <span class="n-icon">🔧</span>
+          <span class="n-label">It uses</span>
+          <span class="n-title">Tools & APIs</span>
+        </div>
+        <div class="agent-arrow">→</div>
+        <div class="agent-node">
+          <span class="n-icon">✅</span>
+          <span class="n-label">It delivers</span>
+          <span class="n-title">The Result</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHATBOT VS AGENT -->
+    <div style="margin-top:3rem;">
+      <p class="muted" style="color:rgba(247,244,239,0.4); margin-bottom:1.25rem;">CHATBOT VS. AGENT — THE KEY DIFFERENCE</p>
+      <table class="compare-table" style="color:var(--paper);">
+        <thead>
+          <tr>
+            <th style="color:rgba(247,244,239,0.5);">Dimension</th>
+            <th style="color:rgba(247,244,239,0.5);">Chatbot</th>
+            <th style="color:var(--accent);">Agent</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="label" style="color:rgba(247,244,239,0.6);">What it does</td>
+            <td style="color:rgba(247,244,239,0.7);">Answers your question</td>
+            <td style="color:var(--paper);">Completes your task</td>
+          </tr>
+          <tr>
+            <td class="label" style="color:rgba(247,244,239,0.6);">Memory</td>
+            <td style="color:rgba(247,244,239,0.7);">This conversation only</td>
+            <td style="color:var(--paper);">Can remember across sessions</td>
+          </tr>
+          <tr>
+            <td class="label" style="color:rgba(247,244,239,0.6);">Tools</td>
+            <td style="color:rgba(247,244,239,0.7);">Text in, text out</td>
+            <td style="color:var(--paper);">Browses web, reads files, sends email</td>
+          </tr>
+          <tr>
+            <td class="label" style="color:rgba(247,244,239,0.6);">Runs for</td>
+            <td style="color:rgba(247,244,239,0.7);">Seconds</td>
+            <td style="color:var(--paper);">Minutes to hours, unattended</td>
+          </tr>
+          <tr>
+            <td class="label" style="color:rgba(247,244,239,0.6);">You do</td>
+            <td style="color:rgba(247,244,239,0.7);">All the follow-up yourself</td>
+            <td style="color:var(--paper);">Review the finished output</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- REAL EXAMPLES -->
+    <div style="margin-top:3rem;">
+      <p class="muted" style="color:rgba(247,244,239,0.4); margin-bottom:0;">REAL EXAMPLES — FOR YOUR LIFE RIGHT NOW</p>
+      <div class="agent-examples">
+        <div class="agent-ex">
+          <span class="ex-icon">📅</span>
+          <h4>School Scheduler</h4>
+          <p>Tell it: "Parse the Buckley weekly email, pull all Grade 2 events, and send me a weekly digest every Sunday night."</p>
+          <span class="try-now">Try with Claude Code</span>
+        </div>
+        <div class="agent-ex">
+          <span class="ex-icon">📧</span>
+          <h4>Email Triage Bot</h4>
+          <p>Reads your inbox, flags what needs a reply today, drafts responses for your review. You approve, it sends.</p>
+          <span class="try-now">Try with Claude + Gmail</span>
+        </div>
+        <div class="agent-ex">
+          <span class="ex-icon">🔍</span>
+          <h4>Research Agent</h4>
+          <p>Tell it: "Research summer programs for a 7-year-old in NYC, under $3k, with spots still open." It searches, compares, and returns a ranked list.</p>
+          <span class="try-now">Try with Perplexity</span>
+        </div>
+        <div class="agent-ex">
+          <span class="ex-icon">🛒</span>
+          <h4>Shopping Agent</h4>
+          <p>"Find the best-reviewed lunchbox under $40 that fits in a Buckley cubby and has no BPA." Done. With links.</p>
+          <span class="try-now">Try with ChatGPT Operator</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:2.5rem; background:rgba(30,86,200,0.12); border:1px solid rgba(30,86,200,0.3); padding:1.5rem; max-width:700px;">
+      <p class="muted" style="color:var(--accent); margin-bottom:0.5rem; display:block;">THE MINDSET SHIFT</p>
+      <p style="font-family:var(--serif); font-size:1.25rem; font-style:italic; color:var(--paper); max-width:none; line-height:1.5;">Stop asking AI for answers. Start assigning AI tasks — with a deadline and a deliverable.</p>
+    </div>
+  </div>
+</section>
+
 
 <!-- BUILD WORKSHOP -->
 <section id="build" class="dark">
@@ -2321,24 +2429,6 @@
       <div class="stat">
         <span class="s-num" style="color:var(--paper);">1</span>
         <span class="s-label">real app you'll walk away with</span>
-      </div>
-    </div>
-
-    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(247,244,239,0.08); margin-top:3rem;">
-      <div style="background:rgba(15,14,12,0.4); padding:1.5rem;">
-        <div style="font-family:var(--mono); font-size:0.6rem; letter-spacing:0.08em; color:var(--accent); margin-bottom:0.5rem; text-transform:uppercase;">Step 1</div>
-        <div style="font-weight:500; color:var(--paper); font-size:0.95rem; margin-bottom:0.4rem;">Claude Chat</div>
-        <p style="font-size:0.82rem; color:rgba(247,244,239,0.6); max-width:none; line-height:1.55;">Tell Claude what you want to build. Describe the app in plain English. Ask it questions. Refine the idea together.</p>
-      </div>
-      <div style="background:rgba(15,14,12,0.4); padding:1.5rem;">
-        <div style="font-family:var(--mono); font-size:0.6rem; letter-spacing:0.08em; color:var(--accent); margin-bottom:0.5rem; text-transform:uppercase;">Step 2</div>
-        <div style="font-weight:500; color:var(--paper); font-size:0.95rem; margin-bottom:0.4rem;">Claude Code</div>
-        <p style="font-size:0.82rem; color:rgba(247,244,239,0.6); max-width:none; line-height:1.55;">Hand it the calendar PDF. Claude reads it, structures the data, and builds the web app. You review and iterate.</p>
-      </div>
-      <div style="background:rgba(15,14,12,0.4); padding:1.5rem;">
-        <div style="font-family:var(--mono); font-size:0.6rem; letter-spacing:0.08em; color:var(--accent); margin-bottom:0.5rem; text-transform:uppercase;">Step 3</div>
-        <div style="font-weight:500; color:var(--paper); font-size:0.95rem; margin-bottom:0.4rem;">Claude Cowork</div>
-        <p style="font-size:0.82rem; color:rgba(247,244,239,0.6); max-width:none; line-height:1.55;">Set it up to run on a schedule — a weekly Sunday digest of what's coming up, delivered to your phone.</p>
       </div>
     </div>
   </div>
@@ -2391,31 +2481,31 @@
     <div class="workshop-steps">
       <div class="w-step">
         <span class="w-num">01</span>
-        <span class="w-time">3 min</span>
+        
         <h4>Feed it the PDF</h4>
         <div class="w-prompt">"Here is the Buckley School calendar PDF. Parse all the events, dates, grades, and types into structured data."</div>
       </div>
       <div class="w-step">
         <span class="w-num">02</span>
-        <span class="w-time">5 min</span>
+        
         <h4>Build the calendar</h4>
         <div class="w-prompt">"Create a web app that displays these events as a calendar. Clean design, easy to read on a phone."</div>
       </div>
       <div class="w-step">
         <span class="w-num">03</span>
-        <span class="w-time">8 min</span>
+        
         <h4>Add filters</h4>
         <div class="w-prompt">"Add a filter by grade so I only see events for my child's class. Add a second filter by event type — days off, school events, deadlines."</div>
       </div>
       <div class="w-step">
         <span class="w-num">04</span>
-        <span class="w-time">5 min</span>
+        
         <h4>Make it beautiful</h4>
         <div class="w-prompt">"Color code: red for days off, blue for school events, green for deadlines. Make it polished enough to share with other Buckley parents."</div>
       </div>
       <div class="w-step">
         <span class="w-num">05</span>
-        <span class="w-time">5 min</span>
+        
         <h4>Add an agent layer</h4>
         <div class="w-prompt">"Add a weekly digest feature: every Sunday, summarize next week's events by grade and format it as a message I can send to our family group chat."</div>
       </div>
@@ -2442,12 +2532,12 @@
         </div>
         <div style="display:flex; flex-direction:column; gap:1.5rem;">
           <div>
-            <span style="font-family:var(--mono); font-size:0.65rem; color:var(--accent);">01 — 3 min</span>
+            <span style="font-family:var(--mono); font-size:0.65rem; color:var(--accent);">01</span>
             <h4 style="color:var(--paper); font-size:0.9rem; font-family:var(--sans); font-weight:500; margin:0.4rem 0;">Create a folder</h4>
             <div style="background:rgba(247,244,239,0.06); border-left:2px solid var(--accent); padding:0.75rem; font-family:var(--mono); font-size:0.7rem; line-height:1.55; color:rgba(247,244,239,0.7);">"Create a new folder called Buckley Calendar on my desktop and set it as your Cowork workspace."</div>
           </div>
           <div>
-            <span style="font-family:var(--mono); font-size:0.65rem; color:var(--accent);">02 — 3 min</span>
+            <span style="font-family:var(--mono); font-size:0.65rem; color:var(--accent);">02</span>
             <h4 style="color:var(--paper); font-size:0.9rem; font-family:var(--sans); font-weight:500; margin:0.4rem 0;">Add the file from Chat</h4>
             <div style="background:rgba(247,244,239,0.06); border-left:2px solid var(--accent); padding:0.75rem; font-family:var(--mono); font-size:0.7rem; line-height:1.55; color:rgba(247,244,239,0.7);">"Save the structured calendar data we built in Claude Chat into this folder as calendar-data.json."</div>
           </div>
@@ -2462,7 +2552,7 @@
         </div>
         <div style="display:flex; flex-direction:column; gap:1.5rem;">
           <div>
-            <span style="font-family:var(--mono); font-size:0.65rem; color:rgba(247,244,239,0.4);">01 — 5 min</span>
+            <span style="font-family:var(--mono); font-size:0.65rem; color:rgba(247,244,239,0.4);">01</span>
             <h4 style="color:var(--paper); font-size:0.9rem; font-family:var(--sans); font-weight:500; margin:0.4rem 0;">Push to GitHub</h4>
             <div style="background:rgba(247,244,239,0.04); border-left:2px solid rgba(247,244,239,0.2); padding:0.75rem; font-family:var(--mono); font-size:0.7rem; line-height:1.55; color:rgba(247,244,239,0.6);">"Create a GitHub repository called buckley-calendar, commit all the files, and push. Then enable GitHub Pages so the app is live at a public URL I can share."</div>
           </div>
